@@ -13,7 +13,6 @@ module.exports = function(sequelize, DataTypes) {
   return Songs;
 };
 
-
 // CREATE TABLE `songs` (
 // 	`song_id` INT NOT NULL AUTO_INCREMENT,
 //     `artist` VARCHAR(100) NOT NULL,

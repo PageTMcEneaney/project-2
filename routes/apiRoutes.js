@@ -1,39 +1,7 @@
 var db = require("../models");
 var Spotify = require("node-spotify-api");
-
 var keys = require("./../keys.js");
-
 var spotify = new Spotify(keys.spotify);
-
-var spotifySong = function() {
-  var song = "The Sign Ace of Base";
-  if (process.argv[3]) {
-    song = process.argv[3];
-  } else if (whatItSays !== "") {
-    song = whatItSays;
-  }
-  spotify.search({ type: "track", query: song }, function(err, data) {
-    if (err) {
-      return console.log("Error occurred: " + err);
-    }
-
-
-    var condensed =
-      "\nArtist: " +
-      data.tracks.items[0].album.artists[0].name +
-      "\nTrack: " +
-      data.tracks.items[0].name +
-      "\nGenre: " +
-      data.tracks.items[0].name +
-      "\nAlbum: " +
-      data.tracks.items[0].album.name +
-      "\nLink: " +
-      data.tracks.items[0].href +
-      "\n------------------------------";
-    console.log("You searched: " + song);
-    console.log(condensed);
-  });
-};
 
 module.exports = function(app) {
   // Get all examples
@@ -42,6 +10,31 @@ module.exports = function(app) {
       res.json(dbKaraoke);
       console.table(dbKaraoke);
     });
+  });
+
+  app.post("/api/spotify/:type/:query", function(req, res) {
+    var type = req.params.type;
+    var query = req.params.query;
+    spotify.search({ type: type, query: query }, function(err, data) {
+      if (err) {
+        console.log(data);
+        return console.log("Error occurred: " + err);
+      }
+
+      var condensed =
+        "\nArtist: " +
+        data.tracks.items[0].album.artists[0].name +
+        "\nTrack: " +
+        data.tracks.items[0].name +
+        "\nGenre: " +
+        data.tracks.items[0].name +
+        "\nAlbum: " +
+        data.tracks.items[0].album.name +
+        "\nLink: " +
+        data.tracks.items[0].href +
+        "\n------------------------------";
+      console.log("You searched: " + );
+      console.log(condensed);
   });
 
   // Create a new example
