@@ -29,12 +29,15 @@ var API = {
       type: "DELETE"
     });
   },
-  getSpotify: function (query, type) {
+  getSpotify: function(data) {
+
     // if (query && type) {
     return $.ajax({
-      url: "api/spotify/" + type + "/" + "elton+john",
-      type: "POST"
+      url: "api/spotify/",
+      type: "post",
+      data: JSON.stringify(data)
     });
+
     // } else {
     //   alert("Please enter something to search");
     // }
@@ -80,7 +83,6 @@ var handleFormSubmit = function (event) {
     type: $(".dropdown-toggle").text().trim()
   };
 
-  console.log(search);
   // if (!(example.text && example.description)) {
   //   alert("You must enter an example text and description!");
   //   return;
@@ -90,7 +92,7 @@ var handleFormSubmit = function (event) {
   // refreshExamples();
   // });
 
-  API.getSpotify(search.query, search.type);
+  API.getSpotify(search);
 
   $exampleText.val("");
   $dropdownSearch.val("");
