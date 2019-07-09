@@ -60,45 +60,67 @@ module.exports = function (app) {
     console.log(type, query);
 
     switch (type) {
-      case "title":
+      case "track":
         spotify.search({ type: "track", query: query, limit: 5 }, function (err, data) {
           if (err) {
             return console.log("Error occurred: " + err);
           }
-          console.log(data);
+          console.log(
+            data.tracks.items[0].name,
+            data.tracks.items[0].artists[0].name
+          );
         });
         break;
       case "artist":
-        spotify.search({ type: "artist", query: query, limit: 5 }, function (err, data) {
+        query = "artist:" + query;
+        spotify.search({ type: "track", query: query, limit: 5 }, function (err, data) {
           if (err) {
             return console.log("Error occurred: " + err);
           }
-          console.log(data);
+          console.log(
+            data.tracks.items[0].name,
+            data.tracks.items[0].artists[0].name
+          );
         });
         break;
       case "year":
-        spotify.search({ type: "year", query: query, limit: 5 }, function (err, data) {
+        query = "year:" + query;
+        spotify.search({ type: "track", query: query, limit: 5 }, function (err, data) {
           if (err) {
             return console.log("Error occurred: " + err);
           }
-          console.log(data);
+          console.log(
+            data.tracks.items[0].name,
+            data.tracks.items[0].artists[0].name
+          );
         });
         break;
       case "genre":
-        spotify.search({ type: "genre", query: query, limit: 5 }, function (err, data) {
+        query = "genre:" + query;
+        spotify.search({ type: "track", query: query, limit: 5 }, function (err, data) {
           if (err) {
             return console.log("Error occurred: " + err);
           }
-          console.log(data);
+          console.log(
+            data.tracks.items[0].name,
+            data.tracks.items[0].artists[0].name
+          );
         });
         break;
       case "album":
-        spotify.search({ type: "album", query: query, limit: 5 }, function (err, data) {
+        query = "album:" + query;
+        spotify.search({ type: "track", query: query, limit: 5 }, function (err, data) {
           if (err) {
             return console.log("Error occurred: " + err);
           }
-          console.log(data);
+          console.log(
+            data.tracks.items[0].name,
+            data.tracks.items[0].artists[0].name
+          );
         });
+        break;
+        case "lyrics":
+          //use musixmatch to get lyrics
         break;
       default:
         console.log("oops, something went wrong");
