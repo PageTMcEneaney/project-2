@@ -1,67 +1,67 @@
 <div id="home">
-  <div class="container">
-    <div class="row">
-      <div class="col-8 offset-2">
-        <h1>{{msg}}</h1>
-        <h2>This is our Home Page!</h2>
-        <form class="clearfix mb-4" action="POST">
-          <div class="form-group">
-            <label for="example-text">Example Text</label>
-            <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-              placeholder="Enter Example Text">
-          </div>
-          <button type="button" class="help btn btn-primary" data-toggle="modal"
-            data-target="#exampleModalScrollable">
-            ?
-        </button>
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
-            aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-scrollable" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalScrollableTitle">How this works</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
+    <div class="container">
+        <div class="row">
+            <div class="col-8 offset-2">
+                <h1>{{msg}}</h1>
+                <h2>This is our Home Page!</h2>
+                <form class="clearfix mb-4" action="POST">
+                    <div class="form-group">
+                        <label for="example-text">Example Text</label>
+                        <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
+                            placeholder="Enter Example Text">
+                    </div>
+                    <button type="button" class="help btn btn-primary" data-toggle="modal"
+                        data-target="#exampleModalScrollable">
+                        ?
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalScrollableTitle">How this works</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="modalText">
+                                        To search for a karaoke song first select what catagory you want to search
+                                        through and then in the search bar enter what you are
+                                        looking for. If you don't know what to look up don't worry! Scroll down just a
+                                        bit and we have some suggestions of the top hits
+                                        through the years.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dropdown">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSearch"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Search Type
                         </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownSearch">
+                            <a class="dropdown-item" href="#" id="ddArtist">Artist</a>
+                            <a class="dropdown-item" href="#" id="ddTrack">Track</a>
+                            <a class="dropdown-item" href="#" id="ddGenre">Genre</a>
+                            <a class="dropdown-item" href="#" id="ddYear">Year</a>
+                            <a class="dropdown-item" href="#" id="ddAlbum">Album</a>
+                            <a class="dropdown-item" href="#" id="ddLyrics">Lyrics</a>
+                        </div>
                     </div>
-                    <div class="modal-body">
-                        <p class="modalText">
-                            To search for a karaoke song first select what catagory you want to search through and then in the search bar enter what you are
-                            looking for. If you don't know what to look up don't worry! Scroll down just a bit and we have some suggestions of the top hits
-                            through the years.
-                        </p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-          <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSearch" data-toggle="dropdown"
-              aria-haspopup="true" aria-expanded="false">
-              Search Type
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownSearch">
-              <a class="dropdown-item" href="#" id="ddArtist">Artist</a>
-              <a class="dropdown-item" href="#" id="ddTrack">Track</a>
-              <a class="dropdown-item" href="#" id="ddGenre">Genre</a>
-              <a class="dropdown-item" href="#" id="ddYear">Year</a>
-              <a class="dropdown-item" href="#" id="ddAlbum">Album</a>
-              <a class="dropdown-item" href="#" id="ddLyrics">Lyrics</a>
-            </div>
-          </div>
-          {{!-- <div class="form-group">
+                    {{!-- <div class="form-group">
             <label for="example-description">Example Description</label>
             <textarea class="form-control" id="example-description" aria-describedby="example-description"
               placeholder="Enter Example Description"></textarea>
           </div> --}}
-          <button id="submit" class="btn btn-primary float-right">Submit</button>
-        </form>
-        {{!-- <h3>Examples:</h3>
+                    <button id="submit" class="btn btn-primary float-right">Submit</button>
+                </form>
+                {{!-- <h3>Examples:</h3>
         <ul id="example-list" class="list-group">
           {{#each examples}}
           <li data-id="{{this.id}}" class="list-group-item">
@@ -70,10 +70,9 @@
           </li>
           {{/each}}
         </ul> --}}
-      </div>
-    </div>
-
-    <div class='row suggestions'>
+            </div>
+        </div>
+        <div class='row suggestions'>
             <div class='col-md-12'>
                 <h1 class='col-md-12 suggestionsTitle'>Suggestions</h1>
                 <div class="accordion" id="accordionExample">
@@ -86,22 +85,91 @@
                                 </button>
                             </h2>
                         </div>
-
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
                             data-parent="#accordionExample">
                             <div class="card-body">
-                                <ul>
-                                    <li>We Belong Together - Mariah Carey</li>
-                                    <li>Yeah! - Usher feat. Lil Jon & Ludacris</li>
-                                    <li>Low - Flo Rida feat T-Pain</li>
-                                    <li>I Gotta Feeling - The Black Eyed Peas</li>
-                                    <li>How You Remind Me - Nickelback</li>
-                                    <li>No One - Alicia Keys</li>
-                                    <li>Boom Boom Pow - The Black Eyed Peas</li>
-                                    <li>Let Me Love You - Mario</li>
-                                    <li>Gold Digger - Kenye West feat. Jamie Foxx</li>
-                                    <li>Apologize - Timberland feat. OneRepublic</li>
-                                </ul>
+                                {{!-- <div class="row"> --}}
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>We Belong Together - Mariah Carey</p>
+                                        </div>
+                                        <div class="col-3 heart">
+                                            <p class="heartBtn" value="We-Belong-Together">♡</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>Yeah! - Usher feat. Lil Jon & Ludacris</p>
+                                        </div>
+                                        <div class="col-3 heart">
+                                            <p class="heartBtn" value="Yeah!">♡</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>Low - Flo Rida feat T-Pain</p>
+                                        </div>
+                                        <div class="col-3 heart">
+                                            <p class="heartBtn" value="Low">♡</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>I Gotta Feeling - The Black Eyed Peas</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="heartBtn" value="I-Gotta-Feeling">♡</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>How You Remind Me - Nickelback</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="heartBtn" value="How-You-Remind-Me">♡</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>No One - Alicia Keys</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="heartBtn" value="No-One">♡</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>Boom Boom Pow - The Black Eyed Peas</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="heartBtn" value="Boom-Boom-Pow">♡</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>Let Me Love You - Mario</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="heartBtn" value="Let-Me-Love-You">♡</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>Gold Digger - Kenye West feat. Jamie Foxx</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="heartBtn" value="Gold-Digger">♡</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p>Apologize - Timberland feat. OneRepublic</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="heartBtn" value="Apologize">♡</p>
+                                        </div>
+                                    </div>
+                                {{!-- </div> --}}
                             </div>
                         </div>
                     </div>
@@ -196,9 +264,8 @@
                 </div>
             </div>
         </div>
-  </div>
+    </div>
 </div>
-<div class="row" id="row1"></div>
 {{!-- <div class="container">
   <form>
     <div class="form-group">

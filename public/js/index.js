@@ -124,6 +124,11 @@ var handleDeleteBtnClick = function () {
   });
 };
 
+$(".heartBtn").on("click", function(){
+  $(this).text(":hearts:");
+  console.log($(this).attr("value"));
+ });
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $dropdownSearch.on("click", dropdownUpdate);
