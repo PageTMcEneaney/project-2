@@ -7,37 +7,46 @@ var $exampleList = $("#example-list");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  saveExample: function (example) {
-    return $.ajax({
-      headers: {
-        "Content-Type": "application/json"
-      },
-      type: "POST",
-      url: "api/examples",
-      data: JSON.stringify(example)
-    });
-  },
+  // saveExample: function (example) {
+  //   return $.ajax({
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     type: "POST",
+  //     url: "api/examples",
+  //     data: JSON.stringify(example)
+  //   });
+  // },
   getExamples: function () {
     return $.ajax({
       url: "api/examples",
       type: "GET"
     });
   },
-  deleteExample: function (id) {
+  deleteExample: function(id) {
     return $.ajax({
       url: "api/examples/" + id,
       type: "DELETE"
     });
   },
-  getSpotify: function (query, type) {
+  getSpotify: function(data) {
     // if (query && type) {
     return $.ajax({
-      url: "api/spotify/" + type + "/" + "elton+john",
-      type: "POST"
+      url: "api/spotify/",
+      type: "POST",
+      data: JSON.stringify(data)
     });
+
     // } else {
     //   alert("Please enter something to search");
     // }
+  },
+  updateDB: function(tracks) {
+    return $.ajax({
+      url: "api/posts/",
+      type: "PUT",
+      data: tracks
+    });
   }
 };
 
@@ -80,7 +89,6 @@ var handleFormSubmit = function (event) {
     type: $(".dropdown-toggle").text().trim()
   };
 
-  console.log(search);
   // if (!(example.text && example.description)) {
   //   alert("You must enter an example text and description!");
   //   return;
@@ -90,8 +98,9 @@ var handleFormSubmit = function (event) {
   // refreshExamples();
   // });
 
-  API.getSpotify(search.query, search.type);
-
+  API.getSpotify(search);
+  // API.updateDB()
+  
   $exampleText.val("");
   $dropdownSearch.val("");
 

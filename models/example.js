@@ -1,15 +1,23 @@
 module.exports = function(sequelize, DataTypes) {
-  var Songs = sequelize.define("Songs", {
-    artist: DataTypes.STRING,
-    track: DataTypes.STRING,
-    genre: DataTypes.STRING,
-    year: DataTypes.INTEGER,
-    album: DataTypes.STRING,
-    youtubeURL: DataTypes.STRING,
-    spotifyID: DataTypes.STRING,
-    duration: DataTypes.DECIMAL,
-    lyrics: DataTypes.TEXT
-  });
+  var Songs = sequelize.define(
+    "Songs",
+    {
+      title: DataTypes.STRING,
+      artist: DataTypes.STRING,
+      year: DataTypes.INTEGER,
+      genre: DataTypes.STRING,
+      album: DataTypes.STRING,
+      duet: DataTypes.BOOLEAN,
+      karafunID: DataTypes.INTEGER,
+      spotifyID: DataTypes.STRING,
+      youtubeURL: DataTypes.STRING,
+      duration: DataTypes.DECIMAL,
+      lyrics: DataTypes.TEXT
+    },
+    {
+      timestamps: false
+    }
+  );
   return Songs;
 };
 
