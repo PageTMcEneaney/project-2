@@ -1,3 +1,53 @@
 .list-group-item {
   line-height: 2.5;
 }
+
+/* Heading */
+header{
+  height: 250px;
+}
+
+h1{  
+  float:left;
+}
+
+/* Search */
+.navLinks{
+  float:right;
+  padding: 12px 0px 12px 0px;
+}
+
+.navLinkItem{
+  padding: 0px 16px 0px 16px;
+}
+
+.searchBar{
+  margin: 15px 15px 15px 15px;
+}
+
+.search{
+  float:right;
+  margin: 15px 0px 0px 0px;
+}
+
+.help{
+  background-color: transparent;
+  color: grey;
+  font-size: 10px;
+  border-color: grey;
+  height: 15px;
+  width: 15px;
+  padding: 0 0 0 0;
+  border-radius: 50px;
+  float: right;
+  margin: 0px 0px 5px 0px;
+}
+
+/* Suggestions */
+.suggestions{
+  margin: 150px 0 0 0;
+}
+.suggestionsTitle{
+  text-align: center;
+  margin: 25px 0 25px 0;
+}

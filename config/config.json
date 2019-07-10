@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "MySQLbau5!",
+    "password": null,
     "database": "karaoke_db",
     "host": "localhost",
     "dialect": "mysql"
