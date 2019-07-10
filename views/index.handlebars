@@ -11,8 +11,8 @@
               placeholder="Enter Example Text">
           </div>
           <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSearch"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSearch" data-toggle="dropdown"
+              aria-haspopup="true" aria-expanded="false">
               Search Type
             </button>
             <div class="dropdown-menu" aria-labelledby="dropdownSearch">
@@ -42,8 +42,25 @@
         </ul> --}}
       </div>
     </div>
+    <div class="row">
+      {{#each tracks}}
+      <h2>Search: {{this.type}} - {{this.query}}</h2>
+      {{/each}}
+      <ul>
+        {{#each tracks}}
+        <li>
+          <p><span class="label">Artist:</span> {{this.artist}}</p>
+          <p><span class="label">Track:</span> {{this.track}}</p>
+          <p><span class="label">Year:</span> {{this.year}}</p>
+          <p><span class="label">Album:</span> {{this.album}}</p>
+          <p><span class="label">Popularity:</span> {{this.popularity}}</p>
+        </li>
+        {{/each}}
+      </ul>
+    </div>
   </div>
 </div>
+<div class="row" id="row1"></div>
 {{!-- <div class="container">
   <form>
     <div class="form-group">
