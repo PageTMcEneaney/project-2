@@ -3,12 +3,14 @@
 }
 
 /* Heading */
-header{
-  height: 250px;
+.header{
+  height: 100px;
 }
 
-h1{  
-  float:left;
+.headerTitle{
+  text-align: center;
+  margin:auto;
+  font-size: 60px;
 }
 
 /* Search */
@@ -25,9 +27,12 @@ h1{
   margin: 15px 15px 15px 15px;
 }
 
-.search{
-  float:right;
-  margin: 15px 0px 0px 0px;
+.srchType{
+  font-size: 0.9rem;
+}
+
+.submit{
+  font-size: 0.9rem;
 }
 
 .help{
@@ -39,7 +44,7 @@ h1{
   width: 15px;
   padding: 0 0 0 0;
   border-radius: 50px;
-  float: right;
+  float: left;
   margin: 0px 0px 5px 0px;
 }
 
