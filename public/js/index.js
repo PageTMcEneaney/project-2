@@ -89,6 +89,7 @@ var handleFormSubmit = function(event) {
 
   API.getSpotify(search);
 
+  // API.updateDB()
   $exampleText.val("");
   $dropdownSearch.val("");
 };
@@ -110,6 +111,15 @@ var handleDeleteBtnClick = function() {
     refreshExamples();
   });
 };
+
+$(".heartBtn").on("click", function() {
+  if ($(this).text() === "♥") {
+    $(this).text("♡");
+  } else {
+    $(this).text("♥");
+  }
+  console.log($(this).attr("value"));
+});
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
