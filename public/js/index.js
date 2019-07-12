@@ -30,16 +30,11 @@ var API = {
     });
   },
   getSpotify: function(data) {
-    // if (query && type) {
     return $.ajax({
       url: "api/spotify/",
       type: "POST",
       data: JSON.stringify(data)
     });
-
-    // } else {
-    //   alert("Please enter something to search");
-    // }
   },
   updateDB: function(tracks) {
     return $.ajax({
@@ -89,24 +84,13 @@ var handleFormSubmit = function (event) {
     type: $(".dropdown-toggle").text().trim()
   };
 
-  // if (!(example.text && example.description)) {
-  //   alert("You must enter an example text and description!");
-  //   return;
-  // }
-
-  // API.saveExample(example).then(function () {
-  // refreshExamples();
-  // });
-
   API.getSpotify(search);
-  // API.updateDB()
-  
+
   $exampleText.val("");
   $dropdownSearch.val("");
-
 };
 
-var dropdownUpdate = function () {
+var dropdownUpdate = function() {
   // eslint-disable-next-line prettier/prettier
   var type = $(this).text().trim();
   $(".dropdown-toggle").text(type);
@@ -114,12 +98,12 @@ var dropdownUpdate = function () {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function () {
+var handleDeleteBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function () {
+  API.deleteExample(idToDelete).then(function() {
     refreshExamples();
   });
 };
@@ -128,3 +112,7 @@ var handleDeleteBtnClick = function () {
 $submitBtn.on("click", handleFormSubmit);
 $dropdownSearch.on("click", dropdownUpdate);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+$(".heartBtn").on("click", function() {
+  $(this).text(":hearts:");
+  console.log($(this).attr("value"));
+});

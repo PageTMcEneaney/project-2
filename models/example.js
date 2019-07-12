@@ -12,6 +12,9 @@ module.exports = function(sequelize, DataTypes) {
       spotifyID: DataTypes.STRING,
       youtubeURL: DataTypes.STRING,
       duration: DataTypes.DECIMAL,
+      popularity: DataTypes.INTEGER,
+      explicit: DataTypes.BOOLEAN,
+      languages: DataTypes.STRING,
       lyrics: DataTypes.TEXT
     },
     {
