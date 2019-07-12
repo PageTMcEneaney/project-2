@@ -1,5 +1,6 @@
 // Get references to page elements
 var $exampleText = $("#example-text");
+// eslint-disable-next-line no-unused-vars
 var $exampleDescription = $("#example-description");
 var $dropdownSearch = $(".dropdown-item");
 var $submitBtn = $("#submit");
@@ -17,7 +18,7 @@ var API = {
   //     data: JSON.stringify(example)
   //   });
   // },
-  getExamples: function () {
+  getExamples: function() {
     return $.ajax({
       url: "api/examples",
       type: "GET"
@@ -46,9 +47,9 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function () {
-  API.getExamples().then(function (data) {
-    var $examples = data.map(function (example) {
+var refreshExamples = function() {
+  API.getExamples().then(function(data) {
+    var $examples = data.map(function(example) {
       var $a = $("<a>")
         .text(example.text)
         .attr("href", "/example/" + example.id);
@@ -76,12 +77,14 @@ var refreshExamples = function () {
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function (event) {
+var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var search = {
     query: $exampleText.val().trim(),
-    type: $(".dropdown-toggle").text().trim()
+    type: $(".dropdown-toggle")
+      .text()
+      .trim()
   };
 
   API.getSpotify(search);

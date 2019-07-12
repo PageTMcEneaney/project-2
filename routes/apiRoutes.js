@@ -107,6 +107,7 @@ var createTracks = function(
     popularity: popularity
   }).then(function(data) {
     console.log("created record for: " + artist + " - " + title);
+    var data = data;
   });
 };
 
