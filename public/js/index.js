@@ -100,13 +100,11 @@ var handleFormSubmit = function (event) {
 
   API.getSpotify(search);
   // API.updateDB()
-  
   $exampleText.val("");
   $dropdownSearch.val("");
-
 };
 
-var dropdownUpdate = function () {
+var dropdownUpdate = function() {
   // eslint-disable-next-line prettier/prettier
   var type = $(this).text().trim();
   $(".dropdown-toggle").text(type);
@@ -114,7 +112,7 @@ var dropdownUpdate = function () {
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
 // Remove the example from the db and refresh the list
-var handleDeleteBtnClick = function () {
+var handleDeleteBtnClick = function() {
   var idToDelete = $(this)
     .parent()
     .attr("data-id");
@@ -124,10 +122,14 @@ var handleDeleteBtnClick = function () {
   });
 };
 
-$(".heartBtn").on("click", function(){
-  $(this).text(":hearts:");
+$(".heartBtn").on("click", function() {
+  if ($(this).text() === "♥") {
+    $(this).text("♡");
+  } else {
+    $(this).text("♥");
+  }
   console.log($(this).attr("value"));
- });
+});
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
