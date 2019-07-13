@@ -1,5 +1,6 @@
 // Get references to page elements
 var $exampleText = $("#example-text");
+// eslint-disable-next-line no-unused-vars
 var $exampleDescription = $("#example-description");
 var $dropdownSearch = $(".dropdown-item");
 var $submitBtn = $("#submit");
@@ -17,7 +18,7 @@ var API = {
   //     data: JSON.stringify(example)
   //   });
   // },
-  getExamples: function () {
+  getExamples: function() {
     return $.ajax({
       url: "api/examples",
       type: "GET"
@@ -30,16 +31,11 @@ var API = {
     });
   },
   getSpotify: function(data) {
-    // if (query && type) {
     return $.ajax({
       url: "api/spotify/",
       type: "POST",
       data: JSON.stringify(data)
     });
-
-    // } else {
-    //   alert("Please enter something to search");
-    // }
   },
   updateDB: function(tracks) {
     return $.ajax({
@@ -51,9 +47,9 @@ var API = {
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function () {
-  API.getExamples().then(function (data) {
-    var $examples = data.map(function (example) {
+var refreshExamples = function() {
+  API.getExamples().then(function(data) {
+    var $examples = data.map(function(example) {
       var $a = $("<a>")
         .text(example.text)
         .attr("href", "/example/" + example.id);
@@ -81,24 +77,18 @@ var refreshExamples = function () {
 
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
-var handleFormSubmit = function (event) {
+var handleFormSubmit = function(event) {
   event.preventDefault();
 
   var search = {
     query: $exampleText.val().trim(),
-    type: $(".dropdown-toggle").text().trim()
+    type: $(".dropdown-toggle")
+      .text()
+      .trim()
   };
 
-  // if (!(example.text && example.description)) {
-  //   alert("You must enter an example text and description!");
-  //   return;
-  // }
-
-  // API.saveExample(example).then(function () {
-  // refreshExamples();
-  // });
-
   API.getSpotify(search);
+
   // API.updateDB()
   $exampleText.val("");
   $dropdownSearch.val("");
@@ -117,7 +107,7 @@ var handleDeleteBtnClick = function() {
     .parent()
     .attr("data-id");
 
-  API.deleteExample(idToDelete).then(function () {
+  API.deleteExample(idToDelete).then(function() {
     refreshExamples();
   });
 };
@@ -135,3 +125,7 @@ $(".heartBtn").on("click", function() {
 $submitBtn.on("click", handleFormSubmit);
 $dropdownSearch.on("click", dropdownUpdate);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+$(".heartBtn").on("click", function() {
+  $(this).text(":hearts:");
+  console.log($(this).attr("value"));
+});
