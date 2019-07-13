@@ -119,6 +119,12 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/api/test", function(req, res) {
+    db.Songs.findAll({}).then(function(data) {
+      res.json(data);
+    });
+  });
+
   // Get specific results based on artist/track/etc and the query
   app.get("/api/:type/:query", function(req, res) {
     var type = req.params.type;
