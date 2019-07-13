@@ -1,5 +1,7 @@
 var db = require("../models");
 
+var path = require("path");
+
 module.exports = function(app) {
   // Load index page
   app.get("/", function(req, res) {
@@ -21,6 +23,29 @@ module.exports = function(app) {
         example: dbExample
       });
     });
+  });
+
+  app.get("/results/:songArtist", function(req, res) {
+    //console.log(req.params.songArtist);
+    var text = req.params.songArtist.split("-");
+    var song = text[0]
+      .trim()
+      .split("+")
+      .join(" ");
+
+    var youtube = text[0];
+    var artist = text[1]
+      .trim()
+      .split("+")
+      .join(" ");
+
+    res.render("songResult", {
+      song: song,
+      youtube: youtube,
+      artist: artist
+    });
+    // res.send("songResult");
+    // res.sendFile(path.join(__dirname + "./../views/result.html"));
   });
 
   // Render 404 page for any unmatched routes
