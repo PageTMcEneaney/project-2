@@ -7,7 +7,7 @@ var spotify = new Spotify(keys.spotify);
 var trackObject = [];
 var spotifyIDs = [];
 
-var parseTracks = function (type, query, data) {
+var parseTracks = function(type, query, data) {
   trackObject = [];
   spotifyIDs = [];
   for (var i = 0; i < data.tracks.items.length; i++) {
@@ -44,7 +44,7 @@ var parseTracks = function (type, query, data) {
   // return postTracks(spotifyIDs);
 };
 
-var matchTracks = function (tracks, j) {
+var matchTracks = function(tracks, j) {
   var artist = tracks.artist;
   var title = tracks.track;
   var album = tracks.album;
@@ -59,7 +59,7 @@ var matchTracks = function (tracks, j) {
       artist: artist,
       title: title
     }
-  }).then(function (data) {
+  }).then(function(data) {
     //if there is a matching record, update db with spotify info
     if (data[0] !== undefined) {
       console.log("Record #" + j + " found: " + artist + title + " updated");
@@ -74,7 +74,7 @@ var matchTracks = function (tracks, j) {
   });
 };
 
-var updateTracks = function (
+var updateTracks = function(
   artist,
   title,
   album,
@@ -96,12 +96,12 @@ var updateTracks = function (
         title: title
       }
     }
-  ).then(function (data) {
+  ).then(function(data) {
     console.log("updated " + data + " record for: " + artist + " - " + title);
   });
 };
 
-var createTracks = function (
+var createTracks = function(
   artist,
   title,
   album,
@@ -119,7 +119,7 @@ var createTracks = function (
     duration: duration,
     year: year,
     popularity: popularity
-  }).then(function (data) {
+  }).then(function(data) {
     console.log("created record for: " + artist + " - " + title);
     var data = data;
   });
@@ -136,16 +136,16 @@ var createTracks = function (
 //   });
 // };
 
-module.exports = function (app) {
+module.exports = function(app) {
   // Get all songs in the db
-  app.get("/api/songs", function (req, res) {
-    db.Songs.findAll({}).then(function (data) {
+  app.get("/api/songs", function(req, res) {
+    db.Songs.findAll({}).then(function(data) {
       res.json(data);
     });
   });
 
   // Get specific results based on artist/track/etc and the query
-  app.get("/api/:type/:query", function (req, res) {
+  app.get("/api/:type/:query", function(req, res) {
     var type = req.params.type;
     var query = req.params.query.split("+").join(" ");
     console.log("query: " + query);
@@ -153,32 +153,32 @@ module.exports = function (app) {
     //switch statement for api query
     switch (type) {
       case "title":
-        db.Songs.findAll({ where: { title: query } }).then(function (data) {
+        db.Songs.findAll({ where: { title: query } }).then(function(data) {
           res.json(data);
         });
         break;
       case "artist":
-        db.Songs.findAll({ where: { artist: query } }).then(function (data) {
+        db.Songs.findAll({ where: { artist: query } }).then(function(data) {
           res.json(data);
         });
         break;
       case "year":
-        db.Songs.findAll({ where: { year: query } }).then(function (data) {
+        db.Songs.findAll({ where: { year: query } }).then(function(data) {
           res.json(data);
         });
         break;
       case "genre":
-        db.Songs.findAll({ where: { genre: query } }).then(function (data) {
+        db.Songs.findAll({ where: { genre: query } }).then(function(data) {
           res.json(data);
         });
         break;
       case "album":
-        db.Songs.findAll({ where: { album: query } }).then(function (data) {
+        db.Songs.findAll({ where: { album: query } }).then(function(data) {
           res.json(data);
         });
         break;
       case "duet":
-        db.Songs.findAll({ where: { duet: query } }).then(function (data) {
+        db.Songs.findAll({ where: { duet: query } }).then(function(data) {
           res.json(data);
         });
         break;
@@ -186,7 +186,7 @@ module.exports = function (app) {
   });
 
   // spotify API call based on user search
-  app.post("/api/spotify", function (req, res) {
+  app.post("/api/spotify", function(req, res) {
     //parsing the result back into a json object
     var keys = JSON.parse(Object.keys(req.body).toString());
     var type = keys.type.toLowerCase();
@@ -195,7 +195,7 @@ module.exports = function (app) {
     // switch statement to generate unique url for spotify query
     switch (type) {
       case "track":
-        spotify.search({ type: "track", query: query, limit: 5 }, function (
+        spotify.search({ type: "track", query: query, limit: 5 }, function(
           err,
           data
         ) {
@@ -207,7 +207,7 @@ module.exports = function (app) {
         break;
       case "artist":
         query = "artist:" + query;
-        spotify.search({ type: "track", query: query, limit: 5 }, function (
+        spotify.search({ type: "track", query: query, limit: 5 }, function(
           err,
           data
         ) {
@@ -219,7 +219,7 @@ module.exports = function (app) {
         break;
       case "year":
         query = "year:" + query;
-        spotify.search({ type: "track", query: query, limit: 5 }, function (
+        spotify.search({ type: "track", query: query, limit: 5 }, function(
           err,
           data
         ) {
@@ -231,7 +231,7 @@ module.exports = function (app) {
         break;
       case "genre":
         query = "genre:" + query;
-        spotify.search({ type: "track", query: query, limit: 5 }, function (
+        spotify.search({ type: "track", query: query, limit: 5 }, function(
           err,
           data
         ) {
@@ -243,7 +243,7 @@ module.exports = function (app) {
         break;
       case "album":
         query = "album:" + query;
-        spotify.search({ type: "track", query: query, limit: 5 }, function (
+        spotify.search({ type: "track", query: query, limit: 5 }, function(
           err,
           data
         ) {
@@ -258,7 +258,7 @@ module.exports = function (app) {
         break;
       default:
         if (query) {
-          spotify.search({ type: "track", query: query, limit: 5 }, function (
+          spotify.search({ type: "track", query: query, limit: 5 }, function(
             err,
             data
           ) {
@@ -268,7 +268,7 @@ module.exports = function (app) {
             parseTracks(type, query, data);
           });
         } else {
-          alert("Please type something to search")
+          alert("Please type something to search");
         }
     }
 
@@ -292,7 +292,7 @@ module.exports = function (app) {
   //   });
   // });
 
-  //PASSPORT ROUTES
+  //PASSPORT ROUTES******************************************
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
   // Otherwise the user will be sent an error

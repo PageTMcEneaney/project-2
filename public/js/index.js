@@ -92,9 +92,10 @@ var refreshExamples = function() {
   });
 };
 
-var populateIndex = function() {
-  console.log("populate test");
-};
+// var populateIndex = function() {
+//   console.log("populate test");
+// };
+
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
