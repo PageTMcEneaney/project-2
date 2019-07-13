@@ -1,4 +1,26 @@
 <div id="home">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand" href="/">Karaoke</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="float-right">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Creators</a>
+            {{!-- PROFILE BUTTON DISABLED UNTIL LOGGED IN --}}
+            <a class="nav-item nav-link disabled" href="/profile">Profile</a>
+            <button type="button" class="help btn btn-primary" data-toggle="modal"
+              data-target="#loginModalScrollable">Log In</button>
+            <button class="btn btn-primary d-none" id="logout">Log Out</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
   <div class="container">
     <div class="row">
       <div class="col-8 offset-2">
@@ -14,7 +36,7 @@
             ?
           </button>
 
-          <!-- Modal -->
+          <!--INFORMATION MODAL -->
           <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
             aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -40,6 +62,75 @@
               </div>
             </div>
           </div>
+
+          {{!-- SIGNUP MODAL --}}
+          <div class="modal" id="signupModalScrollable" tabindex="-1" role="dialog"
+            aria-labelledby="loginleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="signupModalScrollableTitle">Sign Up Form</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form class="signup">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="email-input" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="password-input" placeholder="Password">
+                    </div>
+                    <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                      <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                      <span class="sr-only">Error:</span> <span class="msg"></span>
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Sign Up</button>
+                  </form>
+                  <br />
+                  <br />
+                  <p>Or log in <a href="#" data-dismiss="modal" id="modalLogin" data-toggle="modal"
+                      data-target="#loginModalScrollable">here</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {{!-- LOGIN MODAL --}}
+          <div class="modal" id="loginModalScrollable" tabindex="-1" role="dialog"
+            aria-labelledby="loginleModalScrollableTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="loginModalScrollableTitle">Login Form</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form class="login">
+                    <div class="form-group">
+                      <label for="exampleInputEmail1">Email address</label>
+                      <input type="email" class="form-control" id="email-input" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                      <label for="exampleInputPassword1">Password</label>
+                      <input type="password" class="form-control" id="password-input" placeholder="Password">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Login</button>
+                  </form>
+                  <br />
+                  <p>Or sign up <a href="#" data-dismiss="modal" id="modalSignup" data-toggle="modal"
+                      data-target="#signupModalScrollable">here</a></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
           <div class="dropdown">
             <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownSearch" data-toggle="dropdown"
               aria-haspopup="true" aria-expanded="false">
@@ -62,20 +153,20 @@
           </div> --}}
         </form>
 
-        
+
 
       </div>
     </div>
     {{!-- <div class="row">
       <ul id="example-list" class="list-group">
-          {{#each trackObject}}
+          {{#each query}}
           <li data-id="{{this.spotifyID}}" class="list-group-item">
             <a href="example/{{this.spotifyID}}">{{this.text}}</a>
             <button class="btn btn-danger float-right delete">ｘ</button>
           </li>
           {{/each}}
 
-          {{#each trackObject}}
+          {{#each query}}
           <li>Artist: {{this.artist}}</li>
           <li>Track: {{this.track}}</li>
           <li>Album: {{this.spotifyID}}</li>
@@ -85,193 +176,193 @@
           {{/each}}
         </ul>
     </div> --}}
-      <div class='row suggestions'>
-        <div class='col-md-12'>
-          <h1 class='suggestionsTitle'>Suggestions</h1>
-          <div class="accordion" id="accordionExample">
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
-                    aria-expanded="false" aria-controls="collapseOne">
-                    The 2000's
-                  </button>
-                </h2>
-              </div>
-              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="card-body text-center">
-                  {{!-- <div class="row"> --}}
-                  <div class="row">
-                    <div class="col-9">
-                      <p>We Belong Together - Mariah Carey</p>
-                    </div>
-                    <div class="col-3 heart">
-                      <p class="heartBtn" value="We-Belong-Together">♡</p>
-                    </div>
+    <div class='row suggestions'>
+      <div class='col-md-12'>
+        <h1 class='suggestionsTitle'>Suggestions</h1>
+        <div class="accordion" id="accordionExample">
+          <div class="card">
+            <div class="card-header" id="headingOne">
+              <h2 class="mb-0">
+                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne"
+                  aria-expanded="false" aria-controls="collapseOne">
+                  The 2000's
+                </button>
+              </h2>
+            </div>
+            <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+              <div class="card-body text-center">
+                {{!-- <div class="row"> --}}
+                <div class="row">
+                  <div class="col-9">
+                    <p>We Belong Together - Mariah Carey</p>
                   </div>
-                  <div class="row">
-                    <div class="col-9">
-                      <p>Yeah! - Usher feat. Lil Jon & Ludacris</p>
-                    </div>
-                    <div class="col-3 heart">
-                      <p class="heartBtn" value="Yeah!">♡</p>
-                    </div>
+                  <div class="col-3 heart">
+                    <p class="heartBtn" value="We-Belong-Together">♡</p>
                   </div>
-                  <div class="row">
-                    <div class="col-9">
-                      <p>Low - Flo Rida feat T-Pain</p>
-                    </div>
-                    <div class="col-3 heart">
-                      <p class="heartBtn" value="Low">♡</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-9">
-                      <p>I Gotta Feeling - The Black Eyed Peas</p>
-                    </div>
-                    <div class="col-3">
-                      <p class="heartBtn" value="I-Gotta-Feeling">♡</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-9">
-                      <p>How You Remind Me - Nickelback</p>
-                    </div>
-                    <div class="col-3">
-                      <p class="heartBtn" value="How-You-Remind-Me">♡</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-9">
-                      <p>No One - Alicia Keys</p>
-                    </div>
-                    <div class="col-3">
-                      <p class="heartBtn" value="No-One">♡</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-9">
-                      <p>Boom Boom Pow - The Black Eyed Peas</p>
-                    </div>
-                    <div class="col-3">
-                      <p class="heartBtn" value="Boom-Boom-Pow">♡</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-9">
-                      <p>Let Me Love You - Mario</p>
-                    </div>
-                    <div class="col-3">
-                      <p class="heartBtn" value="Let-Me-Love-You">♡</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-9">
-                      <p>Gold Digger - Kenye West feat. Jamie Foxx</p>
-                    </div>
-                    <div class="col-3">
-                      <p class="heartBtn" value="Gold-Digger">♡</p>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-9">
-                      <p>Apologize - Timberland feat. OneRepublic</p>
-                    </div>
-                    <div class="col-3">
-                      <p class="heartBtn" value="Apologize">♡</p>
-                    </div>
-                  </div>
-                  {{!-- </div> --}}
                 </div>
+                <div class="row">
+                  <div class="col-9">
+                    <p>Yeah! - Usher feat. Lil Jon & Ludacris</p>
+                  </div>
+                  <div class="col-3 heart">
+                    <p class="heartBtn" value="Yeah!">♡</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-9">
+                    <p>Low - Flo Rida feat T-Pain</p>
+                  </div>
+                  <div class="col-3 heart">
+                    <p class="heartBtn" value="Low">♡</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-9">
+                    <p>I Gotta Feeling - The Black Eyed Peas</p>
+                  </div>
+                  <div class="col-3">
+                    <p class="heartBtn" value="I-Gotta-Feeling">♡</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-9">
+                    <p>How You Remind Me - Nickelback</p>
+                  </div>
+                  <div class="col-3">
+                    <p class="heartBtn" value="How-You-Remind-Me">♡</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-9">
+                    <p>No One - Alicia Keys</p>
+                  </div>
+                  <div class="col-3">
+                    <p class="heartBtn" value="No-One">♡</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-9">
+                    <p>Boom Boom Pow - The Black Eyed Peas</p>
+                  </div>
+                  <div class="col-3">
+                    <p class="heartBtn" value="Boom-Boom-Pow">♡</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-9">
+                    <p>Let Me Love You - Mario</p>
+                  </div>
+                  <div class="col-3">
+                    <p class="heartBtn" value="Let-Me-Love-You">♡</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-9">
+                    <p>Gold Digger - Kenye West feat. Jamie Foxx</p>
+                  </div>
+                  <div class="col-3">
+                    <p class="heartBtn" value="Gold-Digger">♡</p>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-9">
+                    <p>Apologize - Timberland feat. OneRepublic</p>
+                  </div>
+                  <div class="col-3">
+                    <p class="heartBtn" value="Apologize">♡</p>
+                  </div>
+                </div>
+                {{!-- </div> --}}
               </div>
             </div>
-            <div class="card">
-              <div class="card-header" id="headingTwo">
-                <h2 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="false" aria-controls="collapseTwo">
-                    The 90's
-                  </button>
-                </h2>
-              </div>
-              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                  squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
-                  quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-                  squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-                  craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                  butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                  nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingTwo">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                  aria-expanded="false" aria-controls="collapseTwo">
+                  The 90's
+                </button>
+              </h2>
+            </div>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+              <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
               </div>
             </div>
-            <div class="card">
-              <div class="card-header" id="headingThree">
-                <h2 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    The 80s
-                  </button>
-                </h2>
-              </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                  squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
-                  quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-                  squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-                  craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                  butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                  nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                  aria-expanded="false" aria-controls="collapseThree">
+                  The 80s
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
               </div>
             </div>
-            <div class="card">
-              <div class="card-header" id="headingThree">
-                <h2 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    The 70s
-                  </button>
-                </h2>
-              </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                  squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
-                  quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-                  squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-                  craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                  butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                  nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                  aria-expanded="false" aria-controls="collapseThree">
+                  The 70s
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
               </div>
             </div>
-            <div class="card">
-              <div class="card-header" id="headingThree">
-                <h2 class="mb-0">
-                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    The 60s
-                  </button>
-                </h2>
-              </div>
-              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                <div class="card-body">
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
-                  squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
-                  quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
-                  squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-                  craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
-                  butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
-                  nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                </div>
+          </div>
+          <div class="card">
+            <div class="card-header" id="headingThree">
+              <h2 class="mb-0">
+                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                  aria-expanded="false" aria-controls="collapseThree">
+                  The 60s
+                </button>
+              </h2>
+            </div>
+            <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+              <div class="card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad
+                squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck
+                quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it
+                squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
+                craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur
+                butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth
+                nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
               </div>
             </div>
           </div>
         </div>
       </div>
+    </div>
   </div>
 </div>
 {{!-- <div class="container">
@@ -279,3 +370,5 @@
 </div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+<script src="/js/login.js"></script>
+<script src="/js/signup.js"></script>

@@ -1,3 +1,11 @@
+// $(document).ready(function(){
+//   var search = {
+//     query: "elton john",
+//     track: "artist"
+//   };
+//   API.getSpotify(search);
+// });
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 // eslint-disable-next-line no-unused-vars
@@ -34,16 +42,25 @@ var API = {
     return $.ajax({
       url: "api/spotify/",
       type: "POST",
-      data: JSON.stringify(data)
+      data: JSON.stringify(data),
+      success: function(response) {
+        console.log("index.js response successful", response);
+      }
     });
   },
-  updateDB: function(tracks) {
+  getSongs: function() {
     return $.ajax({
-      url: "api/posts/",
-      type: "PUT",
-      data: tracks
+      url: "api/examples",
+      type: "GET"
     });
   }
+  // updateDB: function(tracks) {
+  //   return $.ajax({
+  //     url: "api/posts/",
+  //     type: "PUT",
+  //     data: tracks
+  //   });
+  // }
 };
 
 // refreshExamples gets new examples from the db and repopulates the list
@@ -75,6 +92,9 @@ var refreshExamples = function() {
   });
 };
 
+var populateIndex = function() {
+  console.log("populate test");
+};
 // handleFormSubmit is called whenever we submit a new example
 // Save the new example to the db and refresh the list
 var handleFormSubmit = function(event) {
@@ -88,6 +108,9 @@ var handleFormSubmit = function(event) {
   };
 
   API.getSpotify(search);
+  // .then(function() {
+  //   populateIndex();
+  // });
 
   $exampleText.val("");
   $dropdownSearch.val("");
@@ -119,3 +142,5 @@ $(".heartBtn").on("click", function() {
   $(this).text(":hearts:");
   console.log($(this).attr("value"));
 });
+
+// $("#modalLogin").removeClass("d-none");
