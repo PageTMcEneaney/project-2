@@ -1,5 +1,4 @@
 <div id="home">
-
     <div class="container">
         <div class="row header">
             <h1 class="headerTitle">Karaoke!</h1>
@@ -27,7 +26,7 @@
                             <a class="dropdown-item" href="#" id="ddAlbum">Album</a>
                             <a class="dropdown-item" href="#" id="ddLyrics">Lyrics</a>
                         </div>
-                        <button id="submit" class="submit btn btn-primary float-right">Submit</button>
+                        <button id="submit" class="submit btn btn-primary float-right" disabled>Submit</button>
 
                     </div>
                     {{!-- <div class="form-group">
@@ -38,48 +37,53 @@
           </div> --}}
 
                 </form>
-                {{!-- <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul> --}}
-            </div>
-            <div class="col-2">
-                <button type="button" class="help btn btn-primary" data-toggle="modal"
-                    data-target="#exampleModalScrollable">
-                    ?
-                </button>
-                <!-- Modal -->
-                <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
-                    aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
-                    <div class="modal-dialog modal-dialog-scrollable" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalScrollableTitle">How this works</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <p class="modalText">
-                                    To search for a karaoke song first select what catagory you want to search
-                                    through and then in the search bar enter what you are
-                                    looking for. If you don't know what to look up don't worry! Scroll down just a
-                                    bit and we have some suggestions of the top hits
-                                    through the years.
-                                </p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <div class="col-2">
+                    <button type="button" class="help btn btn-primary" data-toggle="modal"
+                        data-target="#exampleModalScrollable">
+                        ?
+                    </button>
+                    <!-- Modal -->
+                    <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-scrollable" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalScrollableTitle">How this works</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="modalText">
+                                        To search for a karaoke song first select what catagory you want to search
+                                        through and then in the search bar enter what you are
+                                        looking for. If you don't know what to look up don't worry! Scroll down just a
+                                        bit and we have some suggestions of the top hits
+                                        through the years.
+                                    </p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="row">
+            <div class="results col-12 text-center">
+                    {{!-- <div class="card-body">
+                        <div class="row">
+                            <div class="col-9">
+                                <p id="trackArtist"></p>
+                            </div>
+                            <div class="col-3 heart">
+                                <p class="heartBtn">♡</p>
+                            </div>
+                        </div>
+                    </div> --}}
+                </div>
         </div>
         <div class='row suggestions'>
             <div class='col-md-12'>
@@ -131,7 +135,7 @@
                             </div>
                         </div>
                     </div> --}}
-                     
+
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
@@ -802,20 +806,13 @@
                                 {{!-- </div> --}}
                             </div>
                         </div>
-                    </div> 
-                    
+                    </div>
+
                 </div>
-              </div>
             </div>
-            
-            </div>
-          </div>
         </div>
 
     </div>
-</div>
-{{!-- <div class="container">
-   --}}
 </div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
