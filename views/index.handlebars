@@ -1,7 +1,7 @@
 <div id="home">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="/">Karaoke</a>
+            <a class="navbar-title" href="/">Karaoke</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -14,14 +14,14 @@
                         {{!-- PROFILE BUTTON DISABLED UNTIL LOGGED IN --}}
                         <a class="nav-item nav-link disabled" href="/profile">Profile</a>
                         <button type="button" class="help btn btn-primary" data-toggle="modal"
-                            data-target="#loginModalScrollable">Log In</button>
+                            data-target="#loginModalScrollable" id="loginButton">Log In</button>
                         <button class="btn btn-primary d-none" id="logout">Log Out</button>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
-    <div class="container">
+    <div class="container" id="indexBody">
         <div class="row header">
             <h1 class="headerTitle">Karaoke!</h1>
         </div>
@@ -33,7 +33,7 @@
                     <div class="form-group">
                         {{!-- <label for="example-text">Example Text</label> --}}
                         <input type="text" id="example-text" class="form-control" aria-describedby="example-text"
-                            placeholder="Enter Example Text">
+                            placeholder="Search">
                     </div>
                     <div class="dropdown">
                         <button class="srchType btn btn-secondary dropdown-toggle" type="button" id="dropdownSearch"
@@ -52,12 +52,12 @@
                     </div>
                 </form>
             </div>
-            <div class="col-2">
+            <div class="col-2 px-1">
                 <button type="button" class="help btn btn-primary" id="help" data-toggle="modal"
                     data-target="#exampleModalScrollable">
                     ?
                 </button>
-                <!-- Modal -->
+                <!-- HELP MODAL -->
                 <div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog"
                     aria-labelledby="exampleModalScrollableTitle" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-scrollable" role="document">
@@ -83,63 +83,87 @@
                         </div>
                     </div>
                 </div>
+                {{!-- SIGNUP MODAL --}}
+                <div class="modal" id="signupModalScrollable" tabindex="-1" role="dialog"
+                    aria-labelledby="loginleModalScrollableTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="signupModalScrollableTitle">Sign Up Form</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="signup">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="signup-email-input"
+                                            placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" class="form-control" id="signup-password-input"
+                                            placeholder="Password">
+                                    </div>
+                                    <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                                        <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                                        <span class="sr-only">Error:</span> <span class="msg"></span>
+                                    </div>
+                                    <button type="submit" class="btn btn-secondary">Sign Up</button>
+                                </form>
+                                <br />
+                                <br />
+                                <p>Or log in <a href="#" data-dismiss="modal" id="modalLogin" data-toggle="modal"
+                                        data-target="#loginModalScrollable">here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {{!-- LOGIN MODAL --}}
+                <div class="modal" id="loginModalScrollable" tabindex="-1" role="dialog"
+                    aria-labelledby="loginleModalScrollableTitle" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="loginModalScrollableTitle">Login Form</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form class="login">
+                                    <div class="form-group">
+                                        <label for="exampleInputEmail1">Email address</label>
+                                        <input type="email" class="form-control" id="login-email-input"
+                                            placeholder="Email">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="exampleInputPassword1">Password</label>
+                                        <input type="password" class="form-control" id="login-password-input"
+                                            placeholder="Password">
+                                    </div>
+                                    <button type="submit" class="btn btn-secondary">Login</button>
+                                </form>
+                                <br />
+                                <p>Or sign up <a href="#" data-dismiss="modal" id="modalSignup" data-toggle="modal"
+                                        data-target="#signupModalScrollable">here</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         <div class='row suggestions'>
             <div class='col-md-12'>
                 <h1 class='col-md-12 suggestionsTitle'>Suggestions</h1>
                 <div class="accordion" id="accordionExample">
-                    {{!-- <div class="card">
-                        <div class="card-header" id="headingNine">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapseNine" aria-expanded="false" aria-controls="collapseNine">
-                                    Classic Karaoke Songs
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseNine" class="collapse" aria-labelledby="headingNine"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                Blah
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingDec">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapseDec" aria-expanded="false" aria-controls="collapseDec">
-                                    Top Hits Through the Decades
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseDec" class="collapse" aria-labelledby="headingDec"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="#">Active</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#" tabindex="-1"
-                                            aria-disabled="true">Disabled</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> --}}
 
+                    {{!-- 2000's --}}
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                <button class="btn btn-block decade text-left" type="button" data-toggle="collapse"
                                     data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                                     The 2000's
                                 </button>
@@ -233,10 +257,11 @@
                             </div>
                         </div>
                     </div>
+                    {{!-- 1990's --}}
                     <div class="card">
                         <div class="card-header" id="headingTwo">
                             <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                                <button class="btn btn-block decade text-left" type="button" data-toggle="collapse"
                                     data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                     The 90's
                                 </button>
@@ -328,11 +353,13 @@
                             </div>
                         </div>
                     </div>
+                    {{!-- 1980's --}}
                     <div class="card">
                         <div class="card-header" id="headingThree">
                             <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <button class="btn btn-block decade text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseThree" aria-expanded="false"
+                                    aria-controls="collapseThree">
                                     The 80s
                                 </button>
                             </h2>
@@ -423,11 +450,13 @@
                             </div>
                         </div>
                     </div>
+                    {{!-- 1970's --}}
                     <div class="card">
                         <div class="card-header" id="headingFour">
                             <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <button class="btn btn-block decade text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseFour" aria-expanded="false"
+                                    aria-controls="collapseFour">
                                     The 70s
                                 </button>
                             </h2>
@@ -518,11 +547,13 @@
                             </div>
                         </div>
                     </div>
+                    {{!-- 1960's --}}
                     <div class="card">
                         <div class="card-header" id="headingFive">
                             <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <button class="btn btn-block decade text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseFive" aria-expanded="false"
+                                    aria-controls="collapseFive">
                                     The 60s
                                 </button>
                             </h2>
@@ -613,11 +644,13 @@
                             </div>
                         </div>
                     </div>
+                    {{!-- 1950's --}}
                     <div class="card">
                         <div class="card-header" id="headingSix">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                <button class="btn btn-block decade text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseSix" aria-expanded="false"
+                                    aria-controls="collapseSix">
                                     The 50's
                                 </button>
                             </h2>
@@ -710,11 +743,13 @@
                             </div>
                         </div>
                     </div>
+                    {{!-- 1940's --}}
                     <div class="card">
                         <div class="card-header" id="headingSeven">
                             <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                <button class="btn btn-block decade text-left collapsed" type="button"
+                                    data-toggle="collapse" data-target="#collapseSeven" aria-expanded="false"
+                                    aria-controls="collapseSeven">
                                     The 40's
                                 </button>
                             </h2>
@@ -807,7 +842,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
