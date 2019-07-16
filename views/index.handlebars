@@ -1,5 +1,26 @@
 <div id="home">
-
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">Karaoke</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="float-right">
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
+                        <a class="nav-item nav-link" href="#">Creators</a>
+                        {{!-- PROFILE BUTTON DISABLED UNTIL LOGGED IN --}}
+                        <a class="nav-item nav-link disabled" href="/profile">Profile</a>
+                        <button type="button" class="help btn btn-primary" data-toggle="modal"
+                            data-target="#loginModalScrollable">Log In</button>
+                        <button class="btn btn-primary d-none" id="logout">Log Out</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
     <div class="container">
         <div class="row header">
             <h1 class="headerTitle">Karaoke!</h1>
@@ -28,28 +49,11 @@
                             <a class="dropdown-item" href="#" id="ddLyrics">Lyrics</a>
                         </div>
                         <button id="submit" class="submit btn btn-primary float-right">Submit</button>
-
                     </div>
-                    {{!-- <div class="form-group">
-
-            <label for="example-description">Example Description</label>
-            <textarea class="form-control" id="example-description" aria-describedby="example-description"
-              placeholder="Enter Example Description"></textarea>
-          </div> --}}
-
                 </form>
-                {{!-- <h3>Examples:</h3>
-        <ul id="example-list" class="list-group">
-          {{#each examples}}
-          <li data-id="{{this.id}}" class="list-group-item">
-            <a href="example/{{this.id}}">{{this.text}}</a>
-            <button class="btn btn-danger float-right delete">ｘ</button>
-          </li>
-          {{/each}}
-        </ul> --}}
             </div>
             <div class="col-2">
-                <button type="button" class="help btn btn-primary" data-toggle="modal"
+                <button type="button" class="help btn btn-primary" id="help" data-toggle="modal"
                     data-target="#exampleModalScrollable">
                     ?
                 </button>
@@ -131,7 +135,7 @@
                             </div>
                         </div>
                     </div> --}}
-                     
+
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <h2 class="mb-0">
@@ -802,20 +806,12 @@
                                 {{!-- </div> --}}
                             </div>
                         </div>
-                    </div> 
-                    
-                </div>
-              </div>
-            </div>
-            
-            </div>
-          </div>
-        </div>
+                    </div>
 
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-{{!-- <div class="container">
-   --}}
 </div>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
