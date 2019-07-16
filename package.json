@@ -19,6 +19,7 @@
     "jquery": "^3.4.1",
     "mysql2": "^1.6.5",
     "node-spotify-api": "^1.1.1",
+    "path": "^0.12.7",
     "sequelize": "^5.8.6"
   },
   "devDependencies": {

@@ -3,6 +3,7 @@
         <div class="row header">
             <h1 class="headerTitle">Karaoke!</h1>
         </div>
+        <!-- Search -->
         <div class="row">
             <div class="col-8 offset-2">
                 {{!-- <h1>{{msg}}</h1> --}}
@@ -71,6 +72,7 @@
                 </div>
             </div>
         </div>
+
         <div class="row">
             <div class="results col-12 text-center">
                     {{!-- <div class="card-body">
@@ -85,11 +87,14 @@
                     </div> --}}
                 </div>
         </div>
+
+        <!-- Suggestions -->
+
         <div class='row suggestions'>
             <div class='col-md-12'>
                 <h1 class='col-md-12 suggestionsTitle'>Suggestions</h1>
                 <div class="accordion" id="accordionExample">
-                    {{!-- <div class="card">
+                    <div class="card">
                         <div class="card-header" id="headingNine">
                             <h2 class="mb-0">
                                 <button class="btn btn-link" type="button" data-toggle="collapse"
@@ -117,41 +122,13 @@
                         <div id="collapseDec" class="collapse" aria-labelledby="headingDec"
                             data-parent="#accordionExample">
                             <div class="card-body">
-                                <ul class="nav nav-tabs">
-                                    <li class="nav-item">
-                                        <a class="nav-link active" href="#">Active</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link" href="#">Link</a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a class="nav-link disabled" href="#" tabindex="-1"
-                                            aria-disabled="true">Disabled</a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div> --}}
 
-                    <div class="card">
-                        <div class="card-header" id="headingOne">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                                    The 2000's
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                {{!-- <div class="row"> --}}
+                                <h3>The 2000's</h3>
+
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>We Belong Together - Mariah Carey</p>
+                                        <p class="song">We Belong Together - Mariah Carey</p>
+                                        {{!-- <a id="song">We Belong Together - Mariah Carey</a> --}}
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="We-Belong-Together">♡</p>
@@ -159,7 +136,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Yeah! - Usher feat. Lil Jon & Ludacris</p>
+                                        <p class="song">Yeah! - Usher feat. Lil Jon & Ludacris</p>
+                                        {{!-- <a id="song">Yeah! - Usher feat. Lil Jon & Ludacris</a> --}}
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Yeah!">♡</p>
@@ -167,7 +145,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Low - Flo Rida feat T-Pain</p>
+                                        <p class="song">Low - Flo Rida feat T-Pain</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Low">♡</p>
@@ -175,7 +153,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>I Gotta Feeling - The Black Eyed Peas</p>
+                                        <p class="song">I Gotta Feeling - The Black Eyed Peas</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="I-Gotta-Feeling">♡</p>
@@ -183,7 +161,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>How You Remind Me - Nickelback</p>
+                                        <p class="song">How You Remind Me - Nickelback</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="How-You-Remind-Me">♡</p>
@@ -191,7 +169,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>No One - Alicia Keys</p>
+                                        <p class="song">No One - Alicia Keys</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="No-One">♡</p>
@@ -199,7 +177,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Boom Boom Pow - The Black Eyed Peas</p>
+                                        <p class="song">Boom Boom Pow - The Black Eyed Peas</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Boom-Boom-Pow">♡</p>
@@ -207,7 +185,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Let Me Love You - Mario</p>
+                                        <p class="song">Let Me Love You - Mario</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Let-Me-Love-You">♡</p>
@@ -215,7 +193,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Gold Digger - Kenye West feat. Jamie Foxx</p>
+                                        <p class="song">Gold Digger - Kenye West feat. Jamie Foxx</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Gold-Digger">♡</p>
@@ -223,31 +201,17 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Apologize - Timberland feat. OneRepublic</p>
+                                        <p class="song">Apologize - Timberland feat. OneRepublic</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Apologize">♡</p>
                                     </div>
                                 </div>
-                                {{!-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingTwo">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    The 90's
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
+
+                                <h3>The 90's</h3>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Smooth - Santana feat. Rob Thomas</p>
+                                        <p class="song">Smooth - Santana feat. Rob Thomas</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Smooth">♡</p>
@@ -255,7 +219,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>How Do I Live - LeAnn Rimes</p>
+                                        <p class="song">How Do I Live - LeAnn Rimes</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="How Do I Live">♡</p>
@@ -263,7 +227,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Macarena (Bayside Boys Mix) - Los Del Rio</p>
+                                        <p class="song">Macarena (Bayside Boys Mix) - Los Del Rio</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Macarena (Bayside Boys Mix)">♡</p>
@@ -271,7 +235,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Un-Break My Heart - Toni Braxton</p>
+                                        <p class="song">Un-Break My Heart - Toni Braxton</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Un-Break My Heart">♡</p>
@@ -279,7 +243,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>You Were Meant For Me - Jewel</p>
+                                        <p class="song">You Were Meant For Me - Jewel</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="You Were Meant For Me">♡</p>
@@ -287,7 +251,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>(Everything I Do) I Do It For You - Bryan Adams</p>
+                                        <p class="song">(Everything I Do) I Do It For You - Bryan Adams</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="I Do It For You">♡</p>
@@ -295,7 +259,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>I'll Make Love To You - Boyz II Men</p>
+                                        <p class="song">I'll Make Love To You - Boyz II Men</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="I'll Make Love To You">♡</p>
@@ -303,7 +267,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Too Close - Next</p>
+                                        <p class="song">Too Close - Next</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Too Close">♡</p>
@@ -311,7 +275,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>One Sweet Day - Mariah Carey & Boyz II Men</p>
+                                        <p class="song">One Sweet Day - Mariah Carey & Boyz II Men</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="One Sweet Day">♡</p>
@@ -319,30 +283,17 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Truly Madly Deeply - Savage Garden</p>
+                                        <p class="song">Truly Madly Deeply - Savage Garden</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Truly Madly Deeply">♡</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingThree">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    The 80s
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseThree" class="collapse" aria-labelledby="headingThree"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
+
+                                <h3>The 80's</h3>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Physical - Olivia Newton-John</p>
+                                        <p class="song">Physical - Olivia Newton-John</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Physical">♡</p>
@@ -350,7 +301,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Bette Davis Eyes - Kim Carnes</p>
+                                        <p class="song">Bette Davis Eyes - Kim Carnes</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Bette Daivs Eyes">♡</p>
@@ -358,7 +309,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Endless Love - Diana Ross & Lionel Richie</p>
+                                        <p class="song">Endless Love - Diana Ross & Lionel Richie</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Endless Love">♡</p>
@@ -366,7 +317,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Eye Of The Tiger - Survivor</p>
+                                        <p class="song">Eye Of The Tiger - Survivor</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Eye Of The Tiger">♡</p>
@@ -374,7 +325,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Every Breath You Take - The Police</p>
+                                        <p class="song">Every Breath You Take - The Police</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Every Breath You Take">♡</p>
@@ -382,7 +333,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Flashdance What A Feeling - Irene Cara</p>
+                                        <p class="song">Flashdance What A Feeling - Irene Cara</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Flashdance What A Feeling">♡</p>
@@ -390,7 +341,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Another One Bites The Dust - Queen</p>
+                                        <p class="song">Another One Bites The Dust - Queen</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Another One Bites The Dust">♡</p>
@@ -398,7 +349,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Say Say Say - Paul McCartney & Michael Jacksong</p>
+                                        <p class="song">Say Say Say - Paul McCartney & Michael Jacksong</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Say Say Say">♡</p>
@@ -406,7 +357,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Call Me - Blondie</p>
+                                        <p class="song">Call Me - Blondie</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Call Me">♡</p>
@@ -414,30 +365,17 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Lady - Kenny Rogers</p>
+                                        <p class="song">Lady - Kenny Rogers</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Lady">♡</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingFour">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    The 70s
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseFour" class="collapse" aria-labelledby="headingFour"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
+
+                                <h3>The 70's</h3>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Wonderful Tonight - Eric Clapton</p>
+                                        <p class="song">Wonderful Tonight - Eric Clapton</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Wonderful Tonight">♡</p>
@@ -445,7 +383,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>YMCA - Village People</p>
+                                        <p class="song">YMCA - Village People</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="YMCA">♡</p>
@@ -453,7 +391,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Sweet Home Alabama - Lynyrd Skynyrd</p>
+                                        <p class="song">Sweet Home Alabama - Lynyrd Skynyrd</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Sweet Home Alabama">♡</p>
@@ -461,7 +399,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>We Are Family = Sister Sledge</p>
+                                        <p class="song">We Are Family = Sister Sledge</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="We Are Family">♡</p>
@@ -469,7 +407,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Old Time Rock & Roll - Bob Seger & The Silver Bullet Band</p>
+                                        <p class="song">Old Time Rock & Roll - Bob Seger & The Silver Bullet Band</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Old Time Rock & Roll">♡</p>
@@ -477,7 +415,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Don't Stop 'Til You Get Enough - Michael Jackson</p>
+                                        <p class="song">Don't Stop 'Til You Get Enough - Michael Jackson</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Don't Stop 'Til You Get Enough'">♡</p>
@@ -485,7 +423,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Dancing Queen - ABBA</p>
+                                        <p class="song">Dancing Queen - ABBA</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Dancing Queen">♡</p>
@@ -493,7 +431,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Brick House - Commodores</p>
+                                        <p class="song">Brick House - Commodores</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Brick House">♡</p>
@@ -501,7 +439,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Play That Funky Music - Wild Cherry</p>
+                                        <p class="song">Play That Funky Music - Wild Cherry</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Play That Funky Music">♡</p>
@@ -509,30 +447,18 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>How Sweet It Is (To Be Loved By You) - James Taylor</p>
+                                        <p class="song">How Sweet It Is (To Be Loved By You) - James Taylor</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="How Sweet It Is (To Be Loved By You)">♡</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingFive">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
-                                    data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                    The 60s
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseFive" class="collapse" aria-labelledby="headingFive"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
+
+                                <h3>The 60's</h3>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Sweet Caroline (Good Times Never Seemed So Good) - Neil Diamond</p>
+                                        <p class="song">Sweet Caroline (Good Times Never Seemed So Good) - Neil Diamond
+                                        </p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Smooth">♡</p>
@@ -540,7 +466,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Shout - Otis Day And The Knights/Isley Brothers</p>
+                                        <p class="song">Shout - Otis Day And The Knights/Isley Brothers</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Shout">♡</p>
@@ -548,7 +474,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Brown Eyed Girl - Van Morrison</p>
+                                        <p class="song">Brown Eyed Girl - Van Morrison</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Brown Eyed Girl">♡</p>
@@ -556,7 +482,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>The Way You Look Tonight - Frank Sinatra</p>
+                                        <p class="song">The Way You Look Tonight - Frank Sinatra</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="The Way You Look Tonight">♡</p>
@@ -564,7 +490,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Twist And Shout - Beatles</p>
+                                        <p class="song">Twist And Shout - Beatles</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Twist And Shout">♡</p>
@@ -572,7 +498,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>At Last - Etta James</p>
+                                        <p class="song">At Last - Etta James</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="At Last">♡</p>
@@ -580,7 +506,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>What A Wonderful World - Louis Armstrong</p>
+                                        <p class="song">What A Wonderful World - Louis Armstrong</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="What A Wonderful World">♡</p>
@@ -588,7 +514,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>My Girl - Temptations</p>
+                                        <p class="song">My Girl - Temptations</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Too Close">♡</p>
@@ -596,7 +522,8 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Can't Help Falling In Love - Elvis Presley With The Jordanaires</p>
+                                        <p class="song">Can't Help Falling In Love - Elvis Presley With The Jordanaires
+                                        </p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Can't Help Falling In Love">♡</p>
@@ -604,31 +531,16 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>The Twist - Chubby Checker</p>
+                                        <p class="song">The Twist - Chubby Checker</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="The Twist">♡</p>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingSix">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
-                                    The 50's
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseSix" class="collapse" aria-labelledby="headingSix"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                {{!-- <div class="row"> --}}
+                                <h3>The 50's</h3>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>That's Amore - Dean Martin</p>
+                                        <p class="song">That's Amore - Dean Martin</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="That's Amore">♡</p>
@@ -636,7 +548,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Come Fly With Me - Frank Sinatra</p>
+                                        <p class="song">Come Fly With Me - Frank Sinatra</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Come Fly With Me">♡</p>
@@ -644,7 +556,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Jailhouse Rock - Elvis Presley</p>
+                                        <p class="song">Jailhouse Rock - Elvis Presley</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="Jailhouse Rock">♡</p>
@@ -652,7 +564,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>I Walk The Line - Johnny Cash</p>
+                                        <p class="song">I Walk The Line - Johnny Cash</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="I Walk The Line">♡</p>
@@ -660,7 +572,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>I've Got You Under My Skin - Frank Sinatra</p>
+                                        <p class="song">I've Got You Under My Skin - Frank Sinatra</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="I've Got You Under My Skin">♡</p>
@@ -668,7 +580,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>In the Mood - Glenn Miller</p>
+                                        <p class="song">In the Mood - Glenn Miller</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="In the Mood">♡</p>
@@ -676,7 +588,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>All Shook Up - Elvis Presley</p>
+                                        <p class="song">All Shook Up - Elvis Presley</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="All Shook Up">♡</p>
@@ -684,7 +596,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>La Bamba - Ritchie Valens</p>
+                                        <p class="song">La Bamba - Ritchie Valens</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="La Bamba">♡</p>
@@ -692,7 +604,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>You Make Me Feel So Young - Frank Sinatra</p>
+                                        <p class="song">You Make Me Feel So Young - Frank Sinatra</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="You Make Me Feel So Young">♡</p>
@@ -700,32 +612,17 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Great Balls Of Fire - Jerry Lee Lewis</p>
+                                        <p class="song">Great Balls Of Fire - Jerry Lee Lewis</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Great Balls Of Fire">♡</p>
                                     </div>
                                 </div>
-                                {{!-- </div> --}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <div class="card-header" id="headingSeven">
-                            <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
-                                    data-target="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
-                                    The 40's
-                                </button>
-                            </h2>
-                        </div>
-                        <div id="collapseSeven" class="collapse" aria-labelledby="headingSeven"
-                            data-parent="#accordionExample">
-                            <div class="card-body">
-                                {{!-- <div class="row"> --}}
+
+                                <h3>The 40's</h3>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>White Christmas - Bing Crosby</p>
+                                        <p class="song">White Christmas - Bing Crosby</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="White Christmas">♡</p>
@@ -733,7 +630,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>The Christmas Song - Nat "King" Cole</p>
+                                        <p class="song">The Christmas Song - Nat "King" Cole</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="The Christmas Song">♡</p>
@@ -741,7 +638,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>God Bless The Child - Billie Holiday</p>
+                                        <p class="song">God Bless The Child - Billie Holiday</p>
                                     </div>
                                     <div class="col-3 heart">
                                         <p class="heartBtn" value="God Bless The Child">♡</p>
@@ -749,7 +646,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Take The "A" Train - Duke Ellington</p>
+                                        <p class="song">Take The "A" Train - Duke Ellington</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Take The 'A' Train">♡</p>
@@ -757,7 +654,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Star Dust - Artie Shaw</p>
+                                        <p class="song">Star Dust - Artie Shaw</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Star Dust">♡</p>
@@ -765,7 +662,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Swinging On A Star - Bing Crosby</p>
+                                        <p class="song">Swinging On A Star - Bing Crosby</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Swinging On A Star">♡</p>
@@ -773,7 +670,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>You Always Hurt The One You Love - Mills Brothers</p>
+                                        <p class="song">You Always Hurt The One You Love - Mills Brothers</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="You Always Hurt The One You Love">♡</p>
@@ -781,7 +678,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Boogie Woogie Bugle Boy - Andrews Sisters</p>
+                                        <p class="song">Boogie Woogie Bugle Boy - Andrews Sisters</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Boogie Woogie Bugle Boy">♡</p>
@@ -789,7 +686,7 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Chattanooga Choo Choo - Glenn Miller</p>
+                                        <p class="song">Chattanooga Choo Choo - Glenn Miller</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Chattanooga Choo Choo">♡</p>
@@ -797,22 +694,20 @@
                                 </div>
                                 <div class="row">
                                     <div class="col-9">
-                                        <p>Paper Doll - Mills Brothers</p>
+                                        <p class="song">Paper Doll - Mills Brothers</p>
                                     </div>
                                     <div class="col-3">
                                         <p class="heartBtn" value="Paper Doll">♡</p>
                                     </div>
                                 </div>
-                                {{!-- </div> --}}
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-
     </div>
 </div>
+
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>

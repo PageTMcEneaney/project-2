@@ -44,6 +44,13 @@ var API = {
       type: "POST",
       data: {data}
     });
+  },
+  results: function() {
+    return $.get({
+      url: "/results",
+      type: "GET"
+      // data: songArtist
+    });
   }
 };
 
@@ -139,11 +146,36 @@ $(".heartBtn").on("click", function() {
   console.log($(this).attr("value"));
 });
 
+$(".song").on("click", function() {
+  console.log($(this).text());
+  var songArtist = $(this)
+    .text()
+    .split("-");
+  var song = songArtist[0]
+    .trim()
+    .split(" ")
+    .join("+");
+  var artist = songArtist[1]
+    .trim()
+    .split(" ")
+    .join("+");
+
+  songArtist = song + "-" + artist;
+  console.log(songArtist);
+
+  // $.get("/results/" + songArtist, function() {
+  //   console.log("test");
+  // });
+
+  // window.location.replace("http://localhost:3000/results/We+Belong+Together-Mariah+Carey");
+  // window.location.replace("http://localhost:3000/results/" + songArtist);
+  window.location.href = "http://localhost:3000/results/" + songArtist;
+
+  // API.results(text);
+  // API.results();
+});
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $dropdownSearch.on("click", dropdownUpdate);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
-$(".heartBtn").on("click", function() {
-  $(this).text(":hearts:");
-  console.log($(this).attr("value"));
-});
