@@ -75,6 +75,10 @@ module.exports = function(app) {
     // res.sendFile(path.join(__dirname + "./../views/result.html"));
  
 
+  app.get("/maps", function(req, res){
+    res.render("maps");
+  })
+
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
     res.render("404");
