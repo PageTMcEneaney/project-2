@@ -4,8 +4,13 @@ a {
 }
 p {
   font-family: 'Raleway', sans-serif;
+  font-size: 0rem;
 }
 
+body, html, #home{
+  height: 100%;
+  background-color: #1e252b;
+}
 
 .list-group-item {
   line-height: 2.5;
@@ -18,7 +23,7 @@ p {
 
 .headerTitle{
   text-align: center;
-  margin:auto;
+  margin: auto;
   font-size: 60px;
   font-family: 'Advent Pro', sans-serif;
   color: #f3f7f5;
@@ -69,6 +74,7 @@ p {
   text-shadow: 2px 2px 0px #bc3f53;
   font-family: 'Advent Pro', sans-serif;
 }
+
 .card-header {
   background-color: #F3F7F5;
   background-image: linear-gradient(to left, #9590A9, #f3f7f5);
@@ -132,7 +138,6 @@ p {
   font-size: 30px;
   color: #1e252b;
   font-weight: 600;
+  /* letter-spacing: 3px; */
 }
-#home {
-  background-color: #1e252b;
-}
+
