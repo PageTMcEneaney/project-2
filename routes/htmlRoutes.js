@@ -426,7 +426,13 @@ module.exports = function(app) {
       .split("+")
       .join(" ");
 
-    var youtube = text[0];
+    var youtube =
+      "https://www.youtube.com/results?search_query=" +
+      text[0] +
+      "+" +
+      text[1] +
+      "+lyrics";
+
     var artist = text[1]
       .trim()
       .split("+")
@@ -446,7 +452,9 @@ module.exports = function(app) {
         duration: duration,
         popularity: data.popularity,
         explicit: data.explicit,
-        languages: data.languages
+        languages: data.languages,
+        youtubeURL: data.youtubeURL,
+        query: youtube
       });
     };
 

@@ -192,7 +192,7 @@ body, html, #home{
 #resultArtist {
   font-family: 'Advent Pro', sans-serif;
 }
-#lyricsHeader, #dataHeader {
+#lyricsHeader, #dataHeader, #lyricsLink {
   padding: 10px;
   margin-bottom: 20px;
   font-family: 'Advent Pro', sans-serif;
@@ -205,4 +205,9 @@ body, html, #home{
   font-size: 40px;
   padding: 0px;
   text-align: right;
+}
+
+#resultsPage h4 {
+  font-weight: 300;
+  color: #9590A9;
 }

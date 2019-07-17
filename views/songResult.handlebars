@@ -73,14 +73,22 @@
                 </div>
             </div>
 
-            <div class="col-md-8" id="lyrics">
+            <div class="col-md-4" id="lyrics">
                 <h3 id="lyricsHeader">lyrics</h3>
+            </div>
+            <div class="col-md-4">
+                <div id="youtube">
+                    <h3 id="lyricsLink">video</h3>
+                    {{#if youtubeURL}}
+                    <iframe src="{{youtubeURL}}" frameborder="0" allow="accelerometer; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    {{else}}
+                    <h4>Youtube Video <i class="fas fa-long-arrow-alt-right"></i> <a href={{query}} target="_blank"><i class="fab fa-youtube"></i></a></h4>
+                    {{/if}}
+                </div>
             </div>
         </div>
         <div class="row">
-            <div id="youtube">
-                <p id="lyricsLink">{{song}} lyrics</p>
-            </div>
+            
         </div>
     </div>
 </div>
