@@ -1,3 +1,12 @@
+/* general rules */
+a {
+  font-family: 'Raleway', sans-serif;
+}
+p {
+  font-family: 'Raleway', sans-serif;
+}
+
+
 .list-group-item {
   line-height: 2.5;
 }
@@ -11,48 +20,119 @@
   text-align: center;
   margin:auto;
   font-size: 60px;
+  font-family: 'Advent Pro', sans-serif;
+  color: #f3f7f5;
 }
 
 /* Search */
-.navLinks{
+/* .navLinks{
   float:right;
   padding: 12px 0px 12px 0px;
-}
+} */
 
-.navLinkItem{
+/* .navLinkItem{
   padding: 0px 16px 0px 16px;
-}
+} */
 
 .searchBar{
-  margin: 15px 15px 15px 15px;
+  margin: 15px 10px 15px 10px;
 }
 
 .srchType{
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  font-family: 'Raleway', sans-serif;
 }
 
 .submit{
-  font-size: 0.9rem;
+  font-size: 0.8rem;
+  font-family: 'Raleway', sans-serif;
 }
 
-.help{
-  background-color: transparent;
-  color: grey;
-  font-size: 10px;
-  border-color: grey;
-  height: 15px;
-  width: 15px;
+#help{
+  background-color: #ec4a3d;
+  color: #f3f7f5;
+  font-size: 12px;
+  border: 2px solid #f3f7f5;
+  height: 22px;
+  width: 22px;
   padding: 0 0 0 0;
   border-radius: 50px;
-  float: left;
-  margin: 0px 0px 5px 0px;
+  margin: 0px 0px 0px 0px;
+  font-weight: bolder;
 }
 
 /* Suggestions */
-.suggestions{
-  margin: 150px 0 0 0;
-}
 .suggestionsTitle{
   text-align: center;
-  margin: 25px 0 25px 0;
+  margin: 20px 0 10px 0;
+  color: #f3f7f5;
+  text-shadow: 2px 2px 0px #bc3f53;
+  font-family: 'Advent Pro', sans-serif;
+}
+.card-header {
+  background-color: #F3F7F5;
+  background-image: linear-gradient(to left, #9590A9, #f3f7f5);
+  border-left: 4px solid #bc3f53;
+  border-radius: 0px;
+  margin: 5px 0px 5px 0px;
+  font-family: 'Advent Pro', sans-serif;
+}
+.card {
+  border-radius: 0px;
+  border: none;
+  background: transparent;
+}
+.card-header:first-child {
+  border-radius: 0px;
+}
+.card-body {
+  margin: 30px 0 30px 0;
+
+  /* color: #f3f7f5; */
+  background-image: linear-gradient(to left, #9590A9, #f3f7f5);
+  border-left: 4px solid #bc3f53;
+  /* text-align: center; */
+}
+.btn-block {
+  text-decoration: none;
+}
+
+#loginButton, #dropdownSearch {
+  background-color: #ec4a3d;
+  border: none;
+  border-radius: 0px;
+  /* box-shadow: 4px 4px 0px #9590a9; */
+
+}
+#submit {
+  background-color: #9590a9;
+  border: none;
+  box-shadow: 4px 4px 0px #bc3f53;
+  border-radius: 0px;
+  color: #f3f7f5;
+}
+#example-text {
+  background-color: #f3f7f5;
+  border: none;
+  border-radius: 0px;
+  box-shadow: 4px 4px 0px #bc3f53;
+  font-family: 'Raleway', sans-serif;
+
+  /* box-shadow: 0px 3px 5px #9590a9 inset; */
+}
+
+/* navbar */
+.navbar {
+  background-color: #F3F7F5;
+  border-top: 4px solid #bc3f53;
+}
+.navbar-title {
+  text-decoration: none;
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 30px;
+  color: #1e252b;
+  font-weight: 600;
+}
+#home {
+  background-color: #1e252b;
 }

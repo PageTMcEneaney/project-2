@@ -3,6 +3,7 @@ var Spotify = require("node-spotify-api");
 var keys = require("./../keys.js");
 var Sequelize = require("sequelize");
 var spotify = new Spotify(keys.spotify);
+// var passport = require("./config/passport");
 // var $ = require("jquery");
 var trackObject = [];
 var spotifyIDs = [];
@@ -186,7 +187,14 @@ module.exports = function(app) {
     });
   });
 
-
+  // app.get(
+  //   "/api/me",
+  //   passport.authenticate("bearer", { session: false }),
+  //   function(req, res) {
+  //     res.json(req.user);
+  //     console.log(req.user, req.authInfo);
+  //   }
+  // );
 
   // // Create a new example
   // app.post("/api/examples", function(req, res) {

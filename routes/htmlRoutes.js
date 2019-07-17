@@ -14,6 +14,24 @@ module.exports = function(app) {
     res.render("index");
   });
 
+  app.get("/signup", function(req, res) {
+    db.Songs.findAll({}).then(function(data) {
+      res.render("signup", {
+        msg: "Karaoke!!",
+        examples: data
+      });
+    });
+  });
+
+  app.get("/login", function(req, res) {
+    db.Songs.findAll({}).then(function(data) {
+      res.render("login", {
+        msg: "Karaoke!!",
+        examples: data
+      });
+    });
+  });
+
   // ----------------------------------
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
@@ -48,6 +66,15 @@ module.exports = function(app) {
     // res.redirect("/query");
   });
 
+
+  // app.get("/profile/:userID", function(req, res) {
+  //   if (req.user) {
+  //     res.redirect("/profile" + userID);
+  //   }
+  //   res.sendFile(path.join(__dirname, "../public/signup.html"));
+
+  // })
+
   app.get("/query", function(req, res) {
     res.render("query");
    });
@@ -74,10 +101,10 @@ module.exports = function(app) {
     // res.send("songResult");
     // res.sendFile(path.join(__dirname + "./../views/result.html"));
  
-
   app.get("/maps", function(req, res){
     res.render("maps");
   })
+
 
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
