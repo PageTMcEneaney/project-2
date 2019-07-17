@@ -2,6 +2,7 @@ var db = require("../models");
 var Spotify = require("node-spotify-api");
 var keys = require("./../keys.js");
 var spotify = new Spotify(keys.spotify);
+// var passport = require("./config/passport");
 // var $ = require("jquery");
 var trackObject = [];
 
@@ -236,6 +237,15 @@ module.exports = function(app) {
     }
     res.json(trackObject);
   });
+
+  // app.get(
+  //   "/api/me",
+  //   passport.authenticate("bearer", { session: false }),
+  //   function(req, res) {
+  //     res.json(req.user);
+  //     console.log(req.user, req.authInfo);
+  //   }
+  // );
 
   // app.get("/api/spotify", function(req, res) {
   //   return $.ajax({
