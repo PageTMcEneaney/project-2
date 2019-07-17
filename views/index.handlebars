@@ -178,6 +178,37 @@
             <div class='col-md-12'>
                 <h1 class='suggestionsTitle'>suggestions</h1>
                 <div class="accordion" id="accordionExample">
+
+                    {{!-- HANDLEBARS ACCORDION --}}
+                    {{#each topRecs}}
+                        <div class="card">
+                            <div class="card-header" id={{heading}}>
+                                <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                    data-target={{dataTarget}} aria-expanded="false" aria-controls={{id}}>
+                                    {{name}}
+                                </button>
+                            </h2>
+                        </div>
+                        <div id={{id}} class="collapse" aria-labelledby={{heading}}
+                            data-parent="#accordionExample">
+                            <div class="card-body">
+                                {{#each this.songs}}
+                                    <div class="row">
+                                        <div class="col-9">
+                                            <p class="song" value='{{this.full}}'>{{this.full}}</p>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="heartBtn" value='{{this.full}}'>♡</p>
+                                        </div>
+                                    </div>
+                                {{/each}}
+                            </div>
+                        </div>
+                    </div>
+                    {{/each}}
+
+                    {{!-- classic accordion --}}
                     <div class="card">
                         <div class="card-header" id="headingNine">
                             <h2 class="mb-0">
@@ -194,6 +225,8 @@
                             </div>
                         </div>
                     </div>
+
+                    {{!-- decades accordion --}}
                     <div class="card">
                         <div class="card-header" id="headingDec">
                             <h2 class="mb-0">

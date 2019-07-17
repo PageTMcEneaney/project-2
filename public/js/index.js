@@ -150,7 +150,8 @@ $(".song").on("click", function() {
   console.log($(this).text());
   var songArtist = $(this)
     .text()
-    .split("-");
+    .split("–");
+    console.log(songArtist);
   var song = songArtist[0]
     .trim()
     .split(" ")
