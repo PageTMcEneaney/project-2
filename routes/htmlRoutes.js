@@ -101,6 +101,9 @@ module.exports = function(app) {
     // res.send("songResult");
     // res.sendFile(path.join(__dirname + "./../views/result.html"));
  
+  app.get("/maps", function(req, res){
+    res.render("maps");
+  })
 
 
   // Render 404 page for any unmatched routes
