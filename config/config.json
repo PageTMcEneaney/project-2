@@ -1,14 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "MySQLbau5!",
+    "password": "Robobutt23!",
     "database": "karaoke_db",
     "host": "localhost",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "MySQLbau5!",
+    "password": "Robobutt23!",
     "database": "testdb",
     "host": "localhost",
     "dialect": "mysql",
