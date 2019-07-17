@@ -155,6 +155,19 @@ body, html, #home{
 }
 
 /************creator page**************/
-.profile {
+.profileL {
   background-image: linear-gradient(to top, #9590A9, #f3f7f5);
+}
+.profileR {
+  background-image: linear-gradient(to top, #9590A9, #f3f7f5);
+}
+.creatorTitle {
+  font-family: 'Advent Pro', sans-serif;
+  padding-top: 20px;
+  padding-left: 15px;
+}
+.externalIcon, .gitIcon {
+  font-size: 30px;
+  color: #ec4a3d!important;
+
 }
