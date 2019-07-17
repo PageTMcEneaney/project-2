@@ -168,7 +168,6 @@ module.exports = function(app) {
     if (type !== "track" && type !== "search type") {
       query = type + ":" + query;
     }
-
     spotify.search({ type: "track", query: query, limit: limit }, function(
       err,
       data

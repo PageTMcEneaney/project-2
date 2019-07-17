@@ -32,3 +32,13 @@ function getLyrics(song, artist) {
     }
   });
 }
+
+$("body").on("click", ".heartBtn", function() {
+  if ($(this).html() === '<i class="fas fa-heart"></i>') {
+    $(this).html('<i class="far fa-heart"></i>');
+  } else {
+    $(this).html('<i class="fas fa-heart"></i>');
+  }
+  console.log($(this).attr("value"));
+});
+
