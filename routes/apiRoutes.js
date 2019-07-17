@@ -1,10 +1,12 @@
 var db = require("../models");
 var Spotify = require("node-spotify-api");
 var keys = require("./../keys.js");
+var Sequelize = require("sequelize");
 var spotify = new Spotify(keys.spotify);
 // var passport = require("./config/passport");
 // var $ = require("jquery");
 var trackObject = [];
+var spotifyIDs = [];
 
 var parseTracks = function(type, query, data) {
   trackObject = [];
@@ -51,11 +53,11 @@ var matchTracks = function(tracks, j) {
   }).then(function(data) {
     //if there is a matching record, update db with spotify info
     if (data[0] !== undefined) {
-      console.log("Record #" + j + "found: " + artist + title + " updated");
+      // console.log("Record #" + j + " found: " + artist + title + " updated");
       updateTracks(artist, title, album, spotifyID, duration, popularity);
     } else {
       //if there is no match, create a new record and populate with spotify info
-      console.log("Record #" + j + "not found: " + artist + title + " created");
+      // console.log("Record #" + j + " not found: " + artist + title + " created");
       createTracks(artist, title, album, spotifyID, duration, year, popularity);
     }
   });
@@ -84,7 +86,7 @@ var updateTracks = function(
       }
     }
   ).then(function(data) {
-    console.log("updated" + data + "record for: " + artist + " - " + title);
+    // console.log("updated" + data + "record for: " + artist + " - " + title);
   });
 };
 
@@ -107,8 +109,33 @@ var createTracks = function(
     year: year,
     popularity: popularity
   }).then(function(data) {
-    console.log("created record for: " + artist + " - " + title);
+    // console.log("created record for: " + artist + " - " + title);
     var data = data;
+  });
+};
+
+var getSongData = function(data, cb) {
+  var Op = Sequelize.Op;
+  spotifyIDs = [];
+  for (var i = 0; i < data.tracks.items.length; i++) {
+    spotifyIDs.push(data.tracks.items[i].id);
+  }
+  // console.log(spotifyIDs);
+  db.Songs.findAll({
+    where: {
+      spotifyID: {
+        [Op.in]: spotifyIDs
+      }
+    }
+  }).then(function(data) {
+    var results = [];
+    for (var i = 0; i < data.length; i++) {
+      results.push(data[i].dataValues);
+    }
+    // console.log("data returned: ", results)
+    if (results.length >= data.length) {
+      cb(results);
+    }
   });
 };
 
@@ -120,122 +147,44 @@ module.exports = function(app) {
     });
   });
 
-  // Get specific results based on artist/track/etc and the query
-  app.get("/api/:type/:query", function(req, res) {
-    var type = req.params.type;
-    var query = req.params.query.split("+").join(" ");
-    console.log("query: " + query);
-
-    //switch statement for api query
-    switch (type) {
-      case "title":
-        db.Songs.findAll({ where: { title: query } }).then(function(data) {
-          res.json(data);
-        });
-        break;
-      case "artist":
-        db.Songs.findAll({ where: { artist: query } }).then(function(data) {
-          res.json(data);
-        });
-        break;
-      case "year":
-        db.Songs.findAll({ where: { year: query } }).then(function(data) {
-          res.json(data);
-        });
-        break;
-      case "genre":
-        db.Songs.findAll({ where: { genre: query } }).then(function(data) {
-          res.json(data);
-        });
-        break;
-      case "album":
-        db.Songs.findAll({ where: { album: query } }).then(function(data) {
-          res.json(data);
-        });
-        break;
-      case "duet":
-        db.Songs.findAll({ where: { duet: query } }).then(function(data) {
-          res.json(data);
-        });
-        break;
-    }
+  app.get("/api/test", function(req, res) {
+    db.Songs.findAll({}).then(function(data) {
+      res.json(data);
+    });
   });
 
-  // spotify API call based on user search
-  app.post("/api/spotify", function(req, res) {
-    //parsing the result back into a json object
-    var keys = JSON.parse(Object.keys(req.body).toString());
-    var type = keys.type.toLowerCase();
-    var query = keys.query.toLowerCase();
+  // Get specific results based on artist/track/etc and the query
+  app.get("/spotify/:type/:query", function(req, res) {
+    var type = req.params.type.toLowerCase();
+    var query = req.params.query
+      .split("+")
+      .join(" ")
+      .toLowerCase();
+    var limit = 5;
 
-    // switch statement to generate unique url for spotify query
-    switch (type) {
-      case "track":
-        spotify.search({ type: "track", query: query, limit: 5 }, function(
-          err,
-          data
-        ) {
-          if (err) {
-            return console.log("Error occurred: " + err);
-          }
-          parseTracks(type, query, data);
-        });
-        break;
-      case "artist":
-        query = "artist:" + query;
-        spotify.search({ type: "track", query: query, limit: 5 }, function(
-          err,
-          data
-        ) {
-          if (err) {
-            return console.log("Error occurred: " + err);
-          }
-          parseTracks(type, query, data);
-        });
-        break;
-      case "year":
-        query = "year:" + query;
-        spotify.search({ type: "track", query: query, limit: 5 }, function(
-          err,
-          data
-        ) {
-          if (err) {
-            return console.log("Error occurred: " + err);
-          }
-          parseTracks(type, query, data);
-        });
-        break;
-      case "genre":
-        query = "genre:" + query;
-        spotify.search({ type: "track", query: query, limit: 5 }, function(
-          err,
-          data
-        ) {
-          if (err) {
-            return console.log("Error occurred: " + err);
-          }
-          parseTracks(type, query, data);
-        });
-        break;
-      case "album":
-        query = "album:" + query;
-        spotify.search({ type: "track", query: query, limit: 5 }, function(
-          err,
-          data
-        ) {
-          if (err) {
-            return console.log("Error occurred: " + err);
-          }
-          parseTracks(type, query, data);
-        });
-        break;
-      case "lyrics":
-        //use musixmatch to get lyrics
-        break;
-      default:
-        console.log("oops, something went wrong");
+
+    console.log("Search: " + type + " - " + query);
+    // Do Spotify lookup
+    if (type !== "track" && type !== "search type") {
+      query = type + ":" + query;
     }
-    res.json(trackObject);
+
+    spotify.search({ type: "track", query: query, limit: limit }, function(
+      err,
+      data
+    ) {
+      if (err) {
+        return console.log("Error occurred: " + err);
+      }
+      // Create / update database if necessary
+      parseTracks(type, query, data);
+      // Return query from our database
+      var returnSong = function(data) {
+        res.json(data);
+      }
+
+      getSongData(data, returnSong); // query where spotifyId in(<list of ids>)
+    });
   });
 
   // app.get(
@@ -246,13 +195,6 @@ module.exports = function(app) {
   //     console.log(req.user, req.authInfo);
   //   }
   // );
-
-  // app.get("/api/spotify", function(req, res) {
-  //   return $.ajax({
-  //     url: "api/examples",
-  //     type: "GET"
-  //   });
-  // });
 
   // // Create a new example
   // app.post("/api/examples", function(req, res) {

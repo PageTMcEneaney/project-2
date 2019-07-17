@@ -24,24 +24,32 @@ var API = {
       type: "GET"
     });
   },
-  deleteExample: function(id) {
-    return $.ajax({
-      url: "api/examples/" + id,
-      type: "DELETE"
-    });
-  },
+  // deleteExample: function(id) {
+  //   return $.ajax({
+  //     url: "api/examples/" + id,
+  //     type: "DELETE"
+  //   });
+  // },
   getSpotify: function(data) {
+    var type = data.type;
+    var query = data.query;
     return $.ajax({
-      url: "api/spotify/",
-      type: "POST",
-      data: JSON.stringify(data)
+      url: "spotify/" + type + "/" + query,
+      type: "GET"
     });
   },
-  updateDB: function(tracks) {
+  updateIndex: function(data) {
     return $.ajax({
-      url: "api/posts/",
-      type: "PUT",
-      data: tracks
+      url: "update",
+      type: "POST",
+      data: {data}
+    });
+  },
+  results: function() {
+    return $.get({
+      url: "/results",
+      type: "GET"
+      // data: songArtist
     });
   }
 };
@@ -87,17 +95,34 @@ var handleFormSubmit = function(event) {
       .trim()
   };
 
-  API.getSpotify(search);
+  API.getSpotify(search).then(function(req, res) {
+    console.log("index.js response: ", req);
+    var data = JSON.stringify(req);    
 
-  // API.updateDB()
+    queryReturn(req);
+    // API.updateIndex(data);
+  });
+
   $exampleText.val("");
   $dropdownSearch.val("");
+};
+
+var queryReturn = function(data) {
+  $(".results").html("");
+
+  console.log ("query return response: ", data)
+    for (var i = 0; i < data.length; i++){
+      var html = '<div class="card-body"><div class="row"><div class="col-9"><p>' + data[i].title + ' - ' + data[i].artist + '</p></div><div class="col-3 heart"><p class="heartBtn" value="' + data[i].id + '">♡</p></div></div>'
+      var input = data[i].title + ' - ' + data[i].artist
+      $(".results").prepend(html);
+    }
 };
 
 var dropdownUpdate = function() {
   // eslint-disable-next-line prettier/prettier
   var type = $(this).text().trim();
   $(".dropdown-toggle").text(type);
+  $("#submit").removeAttr("disabled");
 };
 
 // handleDeleteBtnClick is called when an example's delete button is clicked
@@ -121,11 +146,36 @@ $(".heartBtn").on("click", function() {
   console.log($(this).attr("value"));
 });
 
+$(".song").on("click", function() {
+  console.log($(this).text());
+  var songArtist = $(this)
+    .text()
+    .split("-");
+  var song = songArtist[0]
+    .trim()
+    .split(" ")
+    .join("+");
+  var artist = songArtist[1]
+    .trim()
+    .split(" ")
+    .join("+");
+
+  songArtist = song + "-" + artist;
+  console.log(songArtist);
+
+  // $.get("/results/" + songArtist, function() {
+  //   console.log("test");
+  // });
+
+  // window.location.replace("http://localhost:3000/results/We+Belong+Together-Mariah+Carey");
+  // window.location.replace("http://localhost:3000/results/" + songArtist);
+  window.location.href = "http://localhost:3000/results/" + songArtist;
+
+  // API.results(text);
+  // API.results();
+});
+
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $dropdownSearch.on("click", dropdownUpdate);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
-$(".heartBtn").on("click", function() {
-  $(this).text(":hearts:");
-  console.log($(this).attr("value"));
-});
