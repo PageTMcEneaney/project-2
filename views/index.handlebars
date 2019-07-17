@@ -1,14 +1,15 @@
 <div id="home" class="">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+        <div class="container d-flex justify-content-between">
             <a class="navbar-title" href="/">just duet</a>
+            <div class="d-flex align-items-center">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
                 </button>
             <div class="float-right">
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
+                    <div class="navbar-nav ml-4">
                         <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
                         <a class="nav-item nav-link" id="creatorsBtn" href="/creators">Creators</a>
                         {{!-- PROFILE BUTTON DISABLED UNTIL LOGGED IN --}}
@@ -18,6 +19,7 @@
                         <button class="btn btn-primary d-none" id="logout">Log Out</button>
                     </div>
                 </div>
+            </div>
             </div>
         </div>
     </nav>
@@ -175,8 +177,10 @@
         <!-- Suggestions -->
 
         <div class='row suggestions mb-5'>
-            <div class='col-md-10 offset-1'>
+            <div class="col-1"></div>
+            <div class='col-md-10'>
                 <h1 class='suggestionsTitle'>suggestions</h1>
+                <h2 class="suggestionsHint">popular Karaoke songs by category</h2>
                 <div class="accordion" id="accordionExample">
 
                     {{!-- HANDLEBARS ACCORDION --}}
@@ -199,7 +203,7 @@
                                             <p class="song" value='{{this.full}}'>{{this.full}}</p>
                                         </div>
                                         <div class="col-3">
-                                            <p class="heartBtn song" value='{{this.full}}'>♡</p>
+                                            <p class="heartBtn" value='{{this.full}}'><i class="far fa-heart"></i></p>
                                         </div>
                                     </div>
                                 {{/each}}
@@ -820,6 +824,7 @@
                     </div>
                 </div>
             </div>
+            <div class="col-1"></div>
         </div>
     </div>
 </div>

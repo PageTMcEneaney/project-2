@@ -76,7 +76,7 @@ var queryReturn = function(data) {
   // console.log ("query return response: ", data)
     for (var i = 0; i < data.length; i++){
       var songArtist = data[i].title + ' – ' + data[i].artist;
-      var html = '<div class="card-body"><div class="row"><div class="col-9"><p class="song" value="' + songArtist + '">' + songArtist + '</p></div><div class="col-3 heart"><p class="heartBtn song" id="' + data[i].id + '" value="' + songArtist + '">♡</p></div></div>'
+      var html = '<div class="card-body"><div class="row"><div class="col-9"><p class="song" value="' + songArtist + '">' + songArtist + '</p></div><div class="col-3 heart"><p class="heartBtn" id="' + data[i].id + '" value="' + songArtist + '">♡</p></div></div>'
       $(".results").prepend(html);
     }
 };
@@ -101,10 +101,10 @@ var handleDeleteBtnClick = function() {
 };
 
 $("body").on("click", ".heartBtn", function() {
-  if ($(this).text() === "♥") {
-    $(this).text("♡");
+  if ($(this).html() === '<i class="fas fa-heart"></i>') {
+    $(this).html('<i class="far fa-heart"></i>');
   } else {
-    $(this).text("♥");
+    $(this).html('<i class="fas fa-heart"></i>');
   }
   console.log($(this).attr("value"));
 });

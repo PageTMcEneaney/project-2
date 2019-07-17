@@ -1,19 +1,6 @@
 var db = require("../models");
 // var Sequelize = require("sequelize");
 
-// var searchResults = function(data) {
-
-// }
-
-// var path = require("path");
-
-//category = topLove/topBad etc NAME
-//top = category array of songs/artists
-//full = full name and artist
-//value = song name
-//top = which array
-//topRecs = all arrays
-
 module.exports = function(app) {
   // Load index page
   var topFeminine = [
@@ -332,6 +319,42 @@ module.exports = function(app) {
     }
   ];
 
+  var dbQuery = function(artist, track, cb) {
+    db.Songs.findAll({
+      where: {
+        artist: artist,
+        title: track
+      }
+    }).then(function(data) {
+      if (data[0] !== undefined) {
+        // var results = [];
+        // for (var i = 0; i < data.length; i++) {
+        //   results.push(data[i].dataValues);
+        // }
+        // console.log(data[i].dataValues);
+        cb(data[0].dataValues);
+      } else {
+        console.log("oops, something went wrong!");
+      }
+    });
+  };
+  var convertMS = function(milliseconds) {
+    var day, hour, minute, seconds;
+    seconds = Math.floor(milliseconds / 1000);
+    minute = Math.floor(seconds / 60);
+    seconds = seconds % 60;
+    hour = Math.floor(minute / 60);
+    minute = minute % 60;
+    day = Math.floor(hour / 24);
+    hour = hour % 24;
+    return {
+      day: day,
+      hour: hour,
+      minute: minute,
+      seconds: seconds
+    };
+  };
+
   app.get("/", function(req, res) {
     res.render("index", {
       topRecs: topRecs
@@ -378,7 +401,6 @@ module.exports = function(app) {
       songs: data
     };
     res.render("index", {
-      msg: "Karaoke MESSAGE FROM APP.POST!!"
       // examples: data,
       //songs: data
     });
@@ -410,21 +432,37 @@ module.exports = function(app) {
       .split("+")
       .join(" ");
 
-    res.render("songResult", {
-      song: song,
-      youtube: youtube,
-      artist: artist
-    });
-    // res.send("songResult");
-    // res.sendFile(path.join(__dirname + "./../views/result.html"));
+    var render = function(data) {
+      var duration = convertMS(data.duration);
+      duration = duration.minute + " min " + duration.seconds + " seconds";
+      res.render("songResult", {
+        song: song,
+        youtube: youtube,
+        artist: artist,
+        year: data.year,
+        genre: data.genre,
+        album: data.album,
+        duet: data.duet,
+        duration: duration,
+        popularity: data.popularity,
+        explicit: data.explicit,
+        languages: data.languages
+      });
+    };
 
-    app.get("/maps", function(req, res) {
-      res.render("maps");
-    });
-
-    // Render 404 page for any unmatched routes
-    app.get("*", function(req, res) {
-      res.render("404");
-    });
+    dbQuery(artist, song, render);
   });
+
+  // res.send("songResult");
+  // res.sendFile(path.join(__dirname + "./../views/result.html"));
+
+  app.get("/maps", function(req, res) {
+    res.render("maps");
+  });
+
+  // Render 404 page for any unmatched routes
+  app.get("*", function(req, res) {
+    res.render("404");
+  });
+  // });
 };

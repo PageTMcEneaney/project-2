@@ -10,6 +10,7 @@ p {
 body, html, #home{
   height: 100%;
   background-color: #1e252b;
+  color: #1e252b;
 }
 
 .list-group-item {
@@ -61,24 +62,30 @@ body, html, #home{
 
 /* Suggestions */
 .suggestionsTitle{
-  font-size: 3rem;
+  font-size: 2.5rem;
   text-align: center;
-  margin: 20px 0 10px 0;
+  margin: 10px 0px 5px 0px;
   color: #f3f7f5;
   text-shadow: 2px 2px 0px #bc3f53;
   font-family: 'Advent Pro', sans-serif;
 }
+.suggestionsHint {
+  color: #9590a9;
+  font-weight: 200;
+  font-size: 1rem;
+  text-align: center;
+}
 
 .topTitle {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 .card-header {
-  background-color: #F3F7F5;
   background-image: linear-gradient(to left, #9590A9, #f3f7f5);
   border-left: 4px solid #bc3f53;
   border-radius: 0px;
   margin: 10px 0px 10px 0px;
+  padding: 0px;
   font-family: 'Advent Pro', sans-serif;
 }
 .card {
@@ -91,7 +98,7 @@ body, html, #home{
 }
 .card-body {
   margin: 10px 0 10px 0;
-  padding: 10px;
+  padding: 5px;
   background-image: linear-gradient(to left, #9590A9, #f3f7f5);
   border-right: 4px solid #bc3f53;
 }
@@ -154,12 +161,12 @@ body, html, #home{
   color: #1e252b!important;
 }
 
+
 /************creator page**************/
-.profileL {
+.profile {
   background-image: linear-gradient(to top, #9590A9, #f3f7f5);
-}
-.profileR {
-  background-image: linear-gradient(to top, #9590A9, #f3f7f5);
+  box-shadow: 4px 4px 0px #bc3f53;
+
 }
 .creatorTitle {
   font-family: 'Advent Pro', sans-serif;
@@ -170,4 +177,32 @@ body, html, #home{
   font-size: 30px;
   color: #ec4a3d!important;
 
+}
+
+#creatorsPage .headerTitle {
+  font-size: 3rem;
+  font-weight: 600;
+
+}
+/**************results page********************/
+#resultsPage .container {
+  color: #F3F7F5;
+}
+
+#resultArtist {
+  font-family: 'Advent Pro', sans-serif;
+}
+#lyricsHeader, #dataHeader {
+  padding: 10px;
+  margin-bottom: 20px;
+  font-family: 'Advent Pro', sans-serif;
+  border-bottom: 2px solid #f3f7f5;
+  border-right: 2px solid #f3f7f5;
+  box-shadow: 4px 4px 0px #bc3f53;
+}
+
+#resultHeart {
+  font-size: 40px;
+  padding: 0px;
+  text-align: right;
 }
