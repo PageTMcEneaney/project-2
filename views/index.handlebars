@@ -2,15 +2,15 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-title" href="/">just duet</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button>
+                </button>
             <div class="float-right">
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
                         <a class="nav-item nav-link active" href="/">Home <span class="sr-only">(current)</span></a>
-                        <a class="nav-item nav-link" href="#">Creators</a>
+                        <a class="nav-item nav-link" id="creatorsBtn" href="/creators">Creators</a>
                         {{!-- PROFILE BUTTON DISABLED UNTIL LOGGED IN --}}
                         <a class="nav-item nav-link disabled" href="/profile">Profile</a>
                         <button type="button" class="help btn btn-primary" data-toggle="modal"
@@ -158,7 +158,7 @@
         </div>
         <!-- where the search results append to -->
         <div class="row">
-            <div class="results col-12 text-center">
+            <div class="results col-md-10 offset-1">
                 <!-- <div class="card-body">
                         <div class="row">
                             <div class="col-9">
@@ -175,7 +175,7 @@
         <!-- Suggestions -->
 
         <div class='row suggestions mb-5'>
-            <div class='col-md-12'>
+            <div class='col-md-10 offset-1'>
                 <h1 class='suggestionsTitle'>suggestions</h1>
                 <div class="accordion" id="accordionExample">
 
@@ -184,7 +184,7 @@
                         <div class="card">
                             <div class="card-header" id={{heading}}>
                                 <h2 class="mb-0">
-                                <button class="btn btn-link" type="button" data-toggle="collapse"
+                                <button class="btn btn-block topTitle" type="button" data-toggle="collapse"
                                     data-target={{dataTarget}} aria-expanded="false" aria-controls={{id}}>
                                     {{name}}
                                 </button>
@@ -194,12 +194,12 @@
                             data-parent="#accordionExample">
                             <div class="card-body">
                                 {{#each this.songs}}
-                                    <div class="row">
+                                    <div class="row topRow">
                                         <div class="col-9">
                                             <p class="song" value='{{this.full}}'>{{this.full}}</p>
                                         </div>
                                         <div class="col-3">
-                                            <p class="heartBtn" value='{{this.full}}'>♡</p>
+                                            <p class="heartBtn song" value='{{this.full}}'>♡</p>
                                         </div>
                                     </div>
                                 {{/each}}

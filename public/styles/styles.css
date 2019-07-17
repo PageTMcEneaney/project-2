@@ -18,26 +18,19 @@ body, html, #home{
 
 /* Heading */
 .header{
-  height: 100px;
+  height: 120px;
 }
 
 .headerTitle{
   text-align: center;
   margin: auto;
-  font-size: 60px;
+  font-size: 4rem;
   font-family: 'Advent Pro', sans-serif;
   color: #f3f7f5;
+  font-weight: 600;
 }
 
 /* Search */
-/* .navLinks{
-  float:right;
-  padding: 12px 0px 12px 0px;
-} */
-
-/* .navLinkItem{
-  padding: 0px 16px 0px 16px;
-} */
 
 .searchBar{
   margin: 15px 10px 15px 10px;
@@ -68,6 +61,7 @@ body, html, #home{
 
 /* Suggestions */
 .suggestionsTitle{
+  font-size: 3rem;
   text-align: center;
   margin: 20px 0 10px 0;
   color: #f3f7f5;
@@ -75,12 +69,16 @@ body, html, #home{
   font-family: 'Advent Pro', sans-serif;
 }
 
+.topTitle {
+  font-size: 2rem;
+}
+
 .card-header {
   background-color: #F3F7F5;
   background-image: linear-gradient(to left, #9590A9, #f3f7f5);
   border-left: 4px solid #bc3f53;
   border-radius: 0px;
-  margin: 5px 0px 5px 0px;
+  margin: 10px 0px 10px 0px;
   font-family: 'Advent Pro', sans-serif;
 }
 .card {
@@ -92,15 +90,27 @@ body, html, #home{
   border-radius: 0px;
 }
 .card-body {
-  margin: 30px 0 30px 0;
-
-  /* color: #f3f7f5; */
+  margin: 10px 0 10px 0;
+  padding: 10px;
   background-image: linear-gradient(to left, #9590A9, #f3f7f5);
-  border-left: 4px solid #bc3f53;
-  /* text-align: center; */
+  border-right: 4px solid #bc3f53;
 }
 .btn-block {
   text-decoration: none;
+}
+.btn-block:focus {
+  box-shadow: none!important;
+  outline: 0;
+}
+
+.heartBtn {
+  color: #ec4a3d;
+  font-weight: 700;
+  font-size: 20px;
+}
+.song {
+  margin: 0px 20px 5px 10px;
+  padding: 8px;
 }
 
 #loginButton, #dropdownSearch {
@@ -133,11 +143,18 @@ body, html, #home{
   border-top: 4px solid #bc3f53;
 }
 .navbar-title {
-  text-decoration: none;
+  text-decoration: none!important;
   font-family: 'Advent Pro', sans-serif;
   font-size: 30px;
   color: #1e252b;
   font-weight: 600;
   /* letter-spacing: 3px; */
 }
+.navbar-title:hover {
+  color: #1e252b!important;
+}
 
+/************creator page**************/
+.profile {
+  background-image: linear-gradient(to top, #9590A9, #f3f7f5);
+}

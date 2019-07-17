@@ -5,31 +5,17 @@ var $exampleDescription = $("#example-description");
 var $dropdownSearch = $(".dropdown-item");
 var $submitBtn = $("#submit");
 var $exampleList = $("#example-list");
+var $creatorBtn = $("#creatorsBtn");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
-  // saveExample: function (example) {
-  //   return $.ajax({
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     type: "POST",
-  //     url: "api/examples",
-  //     data: JSON.stringify(example)
-  //   });
-  // },
+ 
   getExamples: function() {
     return $.ajax({
       url: "api/examples",
       type: "GET"
     });
   },
-  // deleteExample: function(id) {
-  //   return $.ajax({
-  //     url: "api/examples/" + id,
-  //     type: "DELETE"
-  //   });
-  // },
   getSpotify: function(data) {
     var type = data.type;
     var query = data.query;
@@ -51,36 +37,13 @@ var API = {
       type: "GET"
       // data: songArtist
     });
+  },
+  creators: function() {
+    return $.ajax({
+      url: "/creators",
+      type: "GET"
+    })
   }
-};
-
-// refreshExamples gets new examples from the db and repopulates the list
-var refreshExamples = function() {
-  API.getExamples().then(function(data) {
-    var $examples = data.map(function(example) {
-      var $a = $("<a>")
-        .text(example.text)
-        .attr("href", "/example/" + example.id);
-
-      var $li = $("<li>")
-        .attr({
-          class: "list-group-item",
-          "data-id": example.id
-        })
-        .append($a);
-
-      var $button = $("<button>")
-        .addClass("btn btn-danger float-right delete")
-        .text("ｘ");
-
-      $li.append($button);
-
-      return $li;
-    });
-
-    $exampleList.empty();
-    $exampleList.append($examples);
-  });
 };
 
 // handleFormSubmit is called whenever we submit a new example
@@ -110,14 +73,14 @@ var handleFormSubmit = function(event) {
 var queryReturn = function(data) {
   $(".results").html("");
 
-  console.log ("query return response: ", data)
+  // console.log ("query return response: ", data)
     for (var i = 0; i < data.length; i++){
-      var html = '<div class="card-body"><div class="row"><div class="col-9"><p>' + data[i].title + ' - ' + data[i].artist + '</p></div><div class="col-3 heart"><p class="heartBtn" value="' + data[i].id + '">♡</p></div></div>'
-      var input = data[i].title + ' - ' + data[i].artist
+      var songArtist = data[i].title + ' – ' + data[i].artist;
+      var html = '<div class="card-body"><div class="row"><div class="col-9"><p class="song" value="' + songArtist + '">' + songArtist + '</p></div><div class="col-3 heart"><p class="heartBtn song" id="' + data[i].id + '" value="' + songArtist + '">♡</p></div></div>'
       $(".results").prepend(html);
     }
 };
-
+ 
 var dropdownUpdate = function() {
   // eslint-disable-next-line prettier/prettier
   var type = $(this).text().trim();
@@ -137,7 +100,7 @@ var handleDeleteBtnClick = function() {
   });
 };
 
-$(".heartBtn").on("click", function() {
+$("body").on("click", ".heartBtn", function() {
   if ($(this).text() === "♥") {
     $(this).text("♡");
   } else {
@@ -146,12 +109,11 @@ $(".heartBtn").on("click", function() {
   console.log($(this).attr("value"));
 });
 
-$(".song").on("click", function() {
-  console.log($(this).text());
-  var songArtist = $(this)
-    .text()
+$("body").on("click", ".song", function() {
+  var value = $(this).attr("value");
+
+  var songArtist = (value)
     .split("–");
-    console.log(songArtist);
   var song = songArtist[0]
     .trim()
     .split(" ")
@@ -164,19 +126,11 @@ $(".song").on("click", function() {
   songArtist = song + "-" + artist;
   console.log(songArtist);
 
-  // $.get("/results/" + songArtist, function() {
-  //   console.log("test");
-  // });
-
-  // window.location.replace("http://localhost:3000/results/We+Belong+Together-Mariah+Carey");
-  // window.location.replace("http://localhost:3000/results/" + songArtist);
   window.location.href = "http://localhost:3000/results/" + songArtist;
-
-  // API.results(text);
-  // API.results();
 });
 
 // Add event listeners to the submit and delete buttons
 $submitBtn.on("click", handleFormSubmit);
 $dropdownSearch.on("click", dropdownUpdate);
 $exampleList.on("click", ".delete", handleDeleteBtnClick);
+$creatorBtn.on("click", API.creators());

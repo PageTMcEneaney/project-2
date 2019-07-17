@@ -5,7 +5,7 @@ var db = require("../models");
 
 // }
 
-var path = require("path");
+// var path = require("path");
 
 //category = topLove/topBad etc NAME
 //top = category array of songs/artists
@@ -228,38 +228,38 @@ module.exports = function(app) {
 
   var topRecs = [
     {
-      name: "Top Feminine Karaoke Songs",
+      name: "Female Vocals",
       songs: topFeminine,
       dataTarget: "#collapse1",
       id: "collapse1",
       heading: "heading1"
     },
     {
-      name: "Top Masculine Karaoke Songs",
+      name: "Male Vocals",
       songs: topMasculine,
       dataTarget: "#collapse2",
       id: "collapse2"
     },
     {
-      name: "Top Easy Karaoke Songs",
+      name: "Easy / Beginner Songs",
       songs: topEasy,
       dataTarget: "#collapse3",
       id: "collapse3"
     },
     {
-      name: "Top Duet Karaoke Songs",
+      name: "Duets!",
       songs: topDuet,
       dataTarget: "#collapse4",
       id: "collapse4"
     },
     {
-      name: "Top Group Karaoke Songs",
+      name: "Karaoke Songs for Groups",
       songs: topGroup,
       dataTarget: "#collapse5",
       id: "collapse5"
     },
     {
-      name: "Top Joke Karaoke Songs",
+      name: "Light Hearted Songs",
       songs: topJoke,
       dataTarget: "#collapse6",
       id: "collapse6"
@@ -295,37 +295,37 @@ module.exports = function(app) {
       id: "collapse11"
     },
     {
-      name: "Top Love Karaoke Songs",
+      name: "Romantic Songs",
       songs: topLove,
       dataTarget: "#collapse12",
       id: "collapse12"
     },
     {
-      name: "Top Rock Karaoke Songs",
+      name: "Rock Songs",
       songs: topRock,
       dataTarget: "#collapse13",
       id: "collapse13"
     },
     {
-      name: "Top Pop Karaoke Songs",
+      name: "Pop Songs",
       songs: topPop,
       dataTarget: "#collapse14",
       id: "collapse14"
     },
     {
-      name: "Top R&B Karaoke Songs",
+      name: "R&B Songs",
       songs: topRnB,
       dataTarget: "#collapse15",
       id: "collapse15"
     },
     {
-      name: "Top Country Karaoke Songs",
+      name: "Country Songs",
       songs: topCountry,
       dataTarget: "#collapse16",
       id: "collapse16"
     },
     {
-      name: "Top Worst Karaoke Songs",
+      name: "Worst Karaoke Songs to Sing",
       songs: topBad,
       dataTarget: "#collapse17",
       id: "collapse17"
@@ -335,8 +335,6 @@ module.exports = function(app) {
   app.get("/", function(req, res) {
     res.render("index", {
       topRecs: topRecs
-      // top: topRecs,
-      // category: topRecs
     });
   });
 
@@ -358,6 +356,10 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/creators", function(req, res) {
+    res.render("creators");
+  });
+
   // ----------------------------------
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
@@ -375,7 +377,6 @@ module.exports = function(app) {
     var dataObject = {
       songs: data
     };
-    // var dataA = [{ id: 5, title: "test" }, { id: 10, title: "test2" }];
     res.render("index", {
       msg: "Karaoke MESSAGE FROM APP.POST!!"
       // examples: data,
