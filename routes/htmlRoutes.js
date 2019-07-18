@@ -395,16 +395,16 @@ module.exports = function(app) {
     });
   });
 
-  app.post("/update", function(req, res) {
-    var data = JSON.parse(req.body.data);
-    var dataObject = {
-      songs: data
-    };
-    res.render("index", {
-      // examples: data,
-      //songs: data
-    });
-  });
+  // app.post("/update", function(req, res) {
+  //   var data = JSON.parse(req.body.data);
+  //   var dataObject = {
+  //     songs: data
+  //   };
+  //   res.render("index", {
+  //     // examples: data,
+  //     //songs: data
+  //   });
+  // });
 
   // app.get("/profile/:userID", function(req, res) {
   //   if (req.user) {

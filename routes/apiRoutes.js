@@ -1,3 +1,4 @@
+/* eslint-disable */
 var db = require("../models");
 var Spotify = require("node-spotify-api");
 var keys = require("./../keys.js");
@@ -120,11 +121,12 @@ var getSongData = function(data, cb) {
   for (var i = 0; i < data.tracks.items.length; i++) {
     spotifyIDs.push(data.tracks.items[i].id);
   }
-  // console.log(spotifyIDs);
   db.Songs.findAll({
     where: {
       spotifyID: {
-        [Op.in]: spotifyIDs
+        /* eslint-disable */
+        [Op.in]: spotifyIDs 
+        /* eslint-enable */
       }
     }
   }).then(function(data) {
