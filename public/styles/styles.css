@@ -120,7 +120,7 @@ body, html, #home{
   padding: 8px;
 }
 
-#loginButton, #dropdownSearch {
+#loginButton, #dropdownSearch, #logout {
   background-color: #ec4a3d;
   border: none;
   border-radius: 0px;
@@ -210,4 +210,48 @@ body, html, #home{
 #resultsPage h4 {
   font-weight: 300;
   color: #9590A9;
+}
+
+/*****************PROFILE PAGE***************/
+#profilePage .container {
+  color: #F3F7F5;
+}
+.profileHeader {
+  font-family: 'Advent Pro', sans-serif;
+  font-size: 3rem;
+  font-weight: 500;
+}
+#profilePage h4 {
+  font-weight: 300;
+  color: #9590A9;
+}
+
+#myTab {
+  border-bottom: 2px solid #f3f7f5;
+  border-right: 2px solid #f3f7f5;
+  box-shadow: 4px 4px 0px #bc3f53;
+}
+#myTab .active {
+background-color: #f3f7f5;
+border: none;
+border-radius: 0;
+
+}
+#myTab .nav-item {
+  border: none;
+  border-radius: 0;
+  margin: 0px 0px -3px 0px;
+}
+#myTab .nav-link {
+  font-family: 'Advent Pro', sans-serif;
+  text-decoration: none;
+  font-size: 1.2rem;
+  color: #ec4a3d;
+}
+#googleLink {
+  text-decoration: none;
+  color: #bc3f53;
+}
+#googleLink:hover {
+  color: #ec4a3d;
 }
