@@ -1,7 +1,7 @@
 var db = require("../models");
-// var Sequelize = require("sequelize");
+var Sequelize = require("sequelize");
 
-module.exports = function(app) {
+module.exports = function (app) {
   // Load index page
   var topFeminine = [
     { full: "Shake It Off – Taylor Swift" },
@@ -319,13 +319,13 @@ module.exports = function(app) {
     }
   ];
 
-  var dbQuery = function(artist, track, cb) {
+  var dbQuery = function (artist, track, cb) {
     db.Songs.findAll({
       where: {
         artist: artist,
         title: track
       }
-    }).then(function(data) {
+    }).then(function (data) {
       if (data[0] !== undefined) {
         // var results = [];
         // for (var i = 0; i < data.length; i++) {
@@ -338,7 +338,7 @@ module.exports = function(app) {
       }
     });
   };
-  var convertMS = function(milliseconds) {
+  var convertMS = function (milliseconds) {
     var day, hour, minute, seconds;
     seconds = Math.floor(milliseconds / 1000);
     minute = Math.floor(seconds / 60);
@@ -355,14 +355,15 @@ module.exports = function(app) {
     };
   };
 
-  app.get("/", function(req, res) {
+
+  app.get("/", function (req, res) {
     res.render("index", {
       topRecs: topRecs
     });
   });
 
-  app.get("/signup", function(req, res) {
-    db.Songs.findAll({}).then(function(data) {
+  app.get("/signup", function (req, res) {
+    db.Songs.findAll({}).then(function (data) {
       res.render("signup", {
         msg: "Karaoke!!",
         examples: data
@@ -370,8 +371,8 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/login", function(req, res) {
-    db.Songs.findAll({}).then(function(data) {
+  app.get("/login", function (req, res) {
+    db.Songs.findAll({}).then(function (data) {
       res.render("login", {
         msg: "Karaoke!!",
         examples: data
@@ -379,21 +380,13 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/creators", function(req, res) {
+  app.get("/creators", function (req, res) {
     res.render("creators");
   });
 
-  // ----------------------------------
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function(req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function(
-      dbExample
-    ) {
-      res.render("example", {
-        example: dbExample
-      });
-    });
-  });
+  app.get("/profile/:userID", function (req, res) {
+    var Op = Sequelize.Op;
+
 
   // app.post("/update", function(req, res) {
   //   var data = JSON.parse(req.body.data);
@@ -406,19 +399,70 @@ module.exports = function(app) {
   //   });
   // });
 
-  // app.get("/profile/:userID", function(req, res) {
-  //   if (req.user) {
-  //     res.redirect("/profile" + userID);
-  //   }
-  //   res.sendFile(path.join(__dirname, "../public/signup.html"));
+    var user = req.params.userID;
+    db.SwingTable.findAll({
+      where: {
+        userID: user
+      }
+    }).then(function (data) {
+      var result = [];
+      var userSongs = [];
+      // var userRatings
+      for (var i = 0; i < data.length; i++) {
+        result.push(data[i].dataValues);
+        userSongs.push(data[i].dataValues.songId)
+      }
+      // console.log(result);
 
-  // })
 
-  app.get("/query", function(req, res) {
-    res.render("query");
+      var render = function (dbResults) {
+        for (var i = 0; i < dbResults.length; i++) {
+          //converting star ratings to icons
+          if (result[i].rating === 1) {
+            dbResults[i].rating = '<i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
+          } else if (result[i].rating === 2) {
+            dbResults[i].rating = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
+          } else if (result[i].rating === 3) {
+            dbResults[i].rating = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
+          } else if (result[i].rating === 4) {
+            dbResults[i].rating = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i>'
+          } else if (result[i].rating === 5) {
+            dbResults[i].rating = '<i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>'
+          } else {
+            dbResults[i].rating = '<i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i><i class="far fa-star"></i>'
+          }
+        }
+        res.render("profile", {
+          ratings: result,
+          dbResults: dbResults,
+        });
+      }
+
+      db.Songs.findAll({
+        where: {
+          id: {
+            [Op.in]: userSongs
+          }
+        }
+      }).then(function (data) {
+        var dbResults = [];
+        for (var i = 0; i < data.length; i++) {
+          dbResults.push(data[i].dataValues);
+        }
+        // console.log("data returned: ", results)
+        if (dbResults.length >= data.length) {
+          render(dbResults);
+        }
+      });
+
+    });
+    // if (req.user) {
+    //   res.render("/profile");
+    // }
   });
 
-  app.get("/results/:songArtist", function(req, res) {
+
+  app.get("/results/:songArtist", function (req, res) {
     //console.log(req.params.songArtist);
     var text = req.params.songArtist.split("-");
     var song = text[0]
@@ -438,7 +482,7 @@ module.exports = function(app) {
       .split("+")
       .join(" ");
 
-    var render = function(data) {
+    var render = function (data) {
       var duration = convertMS(data.duration);
       duration = duration.minute + " min " + duration.seconds + " seconds";
       res.render("songResult", {
@@ -461,15 +505,12 @@ module.exports = function(app) {
     dbQuery(artist, song, render);
   });
 
-  // res.send("songResult");
-  // res.sendFile(path.join(__dirname + "./../views/result.html"));
-
-  app.get("/maps", function(req, res) {
+  app.get("/maps", function (req, res) {
     res.render("maps");
   });
 
   // Render 404 page for any unmatched routes
-  app.get("*", function(req, res) {
+  app.get("*", function (req, res) {
     res.render("404");
   });
   // });
