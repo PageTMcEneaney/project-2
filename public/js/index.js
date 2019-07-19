@@ -120,6 +120,8 @@ $("body").on("click", ".heartBtn", function() {
 });
 
 $("body").on("click", ".song", function() {
+  console.log($(this).attr("value"));
+  console.log("\n\n\n\nTEST");
   var value = $(this).attr("value");
 
   var songArtist = value.split("–");
