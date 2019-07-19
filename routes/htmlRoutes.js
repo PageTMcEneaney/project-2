@@ -387,6 +387,18 @@ module.exports = function (app) {
   app.get("/profile/:userID", function (req, res) {
     var Op = Sequelize.Op;
 
+
+  // app.post("/update", function(req, res) {
+  //   var data = JSON.parse(req.body.data);
+  //   var dataObject = {
+  //     songs: data
+  //   };
+  //   res.render("index", {
+  //     // examples: data,
+  //     //songs: data
+  //   });
+  // });
+
     var user = req.params.userID;
     db.SwingTable.findAll({
       where: {
@@ -401,6 +413,7 @@ module.exports = function (app) {
         userSongs.push(data[i].dataValues.songId)
       }
       // console.log(result);
+
 
       var render = function (dbResults) {
         for (var i = 0; i < dbResults.length; i++) {

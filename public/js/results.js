@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+/* eslint-disable camelcase */
 var song = $("#resultSong").text();
 var artist = $("#resultArtist").text();
 getLyrics(song, artist);
@@ -14,9 +16,9 @@ function getLyrics(song, artist) {
     },
     url: "https://api.musixmatch.com/ws/1.1/matcher.lyrics.get",
     dataType: "jsonp",
-    jsonpCallback: 'jsonp_callback',
-    contentType: 'application/json',
-    success: function (data) {
+    jsonpCallback: "jsonp_callback",
+    contentType: "application/json",
+    success: function(data) {
       //console.log(data);
       var lyrics = data.message.body.lyrics.lyrics_body;
       var fixedLyrics = lyrics.split("\n");
@@ -41,4 +43,3 @@ $("body").on("click", ".heartBtn", function() {
   }
   console.log($(this).attr("value"));
 });
-

@@ -1,3 +1,5 @@
+/* eslint-disable quotes */
+
 // Get references to page elements
 var $exampleText = $("#example-text");
 // eslint-disable-next-line no-unused-vars
@@ -9,7 +11,6 @@ var $creatorBtn = $("#creatorsBtn");
 
 // The API object contains methods for each kind of request we'll make
 var API = {
- 
   getExamples: function() {
     return $.ajax({
       url: "api/examples",
@@ -24,13 +25,13 @@ var API = {
       type: "GET"
     });
   },
-  updateIndex: function(data) {
-    return $.ajax({
-      url: "update",
-      type: "POST",
-      data: {data}
-    });
-  },
+  // updateIndex: function(data) {
+  //   return $.ajax({
+  //     url: "update",
+  //     type: "POST",
+  //     data: {data}
+  //   });
+  // },
   results: function() {
     return $.get({
       url: "/results",
@@ -42,7 +43,7 @@ var API = {
     return $.ajax({
       url: "/creators",
       type: "GET"
-    })
+    });
   }
 };
 
@@ -59,8 +60,8 @@ var handleFormSubmit = function(event) {
   };
 
   API.getSpotify(search).then(function(req, res) {
-    console.log("index.js response: ", req);
-    var data = JSON.stringify(req);    
+    console.log("index.js response: ", req, res);
+    // var data = JSON.stringify(req);
 
     queryReturn(req);
     // API.updateIndex(data);
@@ -74,13 +75,22 @@ var queryReturn = function(data) {
   $(".results").html("");
 
   // console.log ("query return response: ", data)
-    for (var i = 0; i < data.length; i++){
-      var songArtist = data[i].title + ' – ' + data[i].artist;
-      var html = '<div class="card-body"><div class="row"><div class="col-9"><p class="song" value="' + songArtist + '">' + songArtist + '</p></div><div class="col-3 heart"><p class="heartBtn" id="' + data[i].id + '" value="' + songArtist + '">♡</p></div></div>'
-      $(".results").prepend(html);
-    }
+  for (var i = 0; i < data.length; i++) {
+    var songArtist = data[i].title + " – " + data[i].artist;
+    var html =
+      '<div class="card-body"><div class="row"><div class="col-9"><p class="song" value="' +
+      songArtist +
+      '">' +
+      songArtist +
+      '</p></div><div class="col-3 heart"><p class="heartBtn" id="' +
+      data[i].id +
+      '" value="' +
+      songArtist +
+      '">♡</p></div></div>';
+    $(".results").prepend(html);
+  }
 };
- 
+
 var dropdownUpdate = function() {
   // eslint-disable-next-line prettier/prettier
   var type = $(this).text().trim();
@@ -112,8 +122,7 @@ $("body").on("click", ".heartBtn", function() {
 $("body").on("click", ".song", function() {
   var value = $(this).attr("value");
 
-  var songArtist = (value)
-    .split("–");
+  var songArtist = value.split("–");
   var song = songArtist[0]
     .trim()
     .split(" ")

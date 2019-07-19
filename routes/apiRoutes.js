@@ -1,3 +1,4 @@
+/* eslint-disable no-alert */
 var db = require("../models");
 var Spotify = require("node-spotify-api");
 var keys = require("./../keys.js");
@@ -31,11 +32,11 @@ var parseTracks = function(type, query, data) {
 
   //for loop to update database with new spotify data
   for (var j = 0; j < trackObject.length; j++) {
-    matchTracks(trackObject[j], j);
+    matchTracks(trackObject[j]);
   }
 };
 
-var matchTracks = function(tracks, j) {
+var matchTracks = function(tracks) {
   var artist = tracks.artist;
   var title = tracks.track;
   var album = tracks.album;
@@ -86,7 +87,7 @@ var updateTracks = function(
       }
     }
   ).then(function(data) {
-    // console.log("updated" + data + "record for: " + artist + " - " + title);
+    console.log("updated" + data + "record for: " + artist + " - " + title);
   });
 };
 
@@ -120,10 +121,10 @@ var getSongData = function(data, cb) {
   for (var i = 0; i < data.tracks.items.length; i++) {
     spotifyIDs.push(data.tracks.items[i].id);
   }
-  // console.log(spotifyIDs);
   db.Songs.findAll({
     where: {
       spotifyID: {
+        /* eslint-disable no-alert */
         [Op.in]: spotifyIDs
       }
     }
@@ -162,7 +163,6 @@ module.exports = function(app) {
       .toLowerCase();
     var limit = 5;
 
-
     console.log("Search: " + type + " - " + query);
     // Do Spotify lookup
     if (type !== "track" && type !== "search type") {
@@ -180,25 +180,9 @@ module.exports = function(app) {
       // Return query from our database
       var returnSong = function(data) {
         res.json(data);
-      }
+      };
 
       getSongData(data, returnSong); // query where spotifyId in(<list of ids>)
     });
   });
-
-  // app.get(
-  //   "/api/me",
-  //   passport.authenticate("bearer", { session: false }),
-  //   function(req, res) {
-  //     res.json(req.user);
-  //     console.log(req.user, req.authInfo);
-  //   }
-  // );
-
-  // // Create a new example
-  // app.post("/api/examples", function(req, res) {
-  //   db.Songs.create(req.body).then(function (dbExample) {
-  //     res.json(dbExample);
-  //   });
-  // });
 };

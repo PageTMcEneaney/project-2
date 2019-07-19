@@ -29,5 +29,6 @@
             "always"
         ],
         "prettier/prettier": "error"
-    }
+    },
+    "parser":"babel-eslint"
 }
