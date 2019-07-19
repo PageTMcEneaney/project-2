@@ -120,6 +120,8 @@ $("body").on("click", ".heartBtn", function() {
 });
 
 $("body").on("click", ".song", function() {
+  console.log($(this).attr("value"));
+  console.log("\n\n\n\nTEST");
   var value = $(this).attr("value");
 
   var songArtist = value.split("–");
@@ -135,7 +137,7 @@ $("body").on("click", ".song", function() {
   songArtist = song + "-" + artist;
   console.log(songArtist);
 
-  window.location.href = "http://localhost:3000/results/" + songArtist;
+  window.location.href = "https://rocky-reef-42287.herokuapp.com/results/" + songArtist;
 });
 
 // Add event listeners to the submit and delete buttons
